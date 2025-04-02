@@ -53,7 +53,7 @@ function Homepage() {
   ];
 
   return (
-    <div className="">
+    <div className="bg-black">
       <Navbar />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:h-80 md:h-96 lg:h-[25rem] xl:h-[30rem] 2xl:h-[35rem]">
@@ -102,7 +102,7 @@ function Homepage() {
               subIcon="/images/freeShipping.png"
               title="Free Shipping"
               description="Free shipping for all fully paid items"
-              subIconStyles="bottom-0 mb-3 ml-4"
+              subIconStyles="bottom-0"
             />
 
             {/* One to One Warranty */}
@@ -111,7 +111,7 @@ function Homepage() {
               subIcon="/images/OnetoOne.png"
               title="One to one Warranty"
               description="Within 30 days for an exchange"
-              subIconStyles="bottom-0 ml-4 mb-1"
+              subIconStyles="bottom-0"
             />
 
             {/* Easy Payment */}
@@ -120,7 +120,7 @@ function Homepage() {
               subIcon="/images/EasyPayment.png"
               title="Easy Payment"
               description="Pay with multiple Credit Cards"
-              subIconStyles="bottom-0 right-3 ml-1 mb-3"
+              subIconStyles="bottom-0"
             />
 
             {/* Online Support */}
@@ -129,11 +129,11 @@ function Homepage() {
               subIcon="/images/Online.png"
               title="Online Support"
               description="24/7 Support"
-              subIconStyles="bottom-0 right-3 ml-1 mb-2"
+              subIconStyles="bottom-0"
             />
           </div>
 
-          <h2 className="text-left mt-12 font-bold text-xl">Hot Deals</h2>
+          <h2 className="text-left text-white mt-12 font-bold text-xl">Hot Deals</h2>
 
           {/* hot deal section */}
           <HomePageHotDeals />

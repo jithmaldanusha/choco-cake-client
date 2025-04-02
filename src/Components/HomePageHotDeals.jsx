@@ -135,15 +135,17 @@ function HomePageHotDeals() {
             alt="Your Company"
             src="images/hotdealsHome.png"
             className="mx-auto h-96 rounded-md relative hover:scale-x-110 hover:scale-y-110 hover:transition duration-500 ease-in-out"
-            // width={550}
-            // height={}
+          // width={550}
+          // height={}
           />
-          <p className="absolute bottom-24 left-44 text-white font-bold text-lg text-center tracking-wide">
-            DJI Mavic Pro 3
-          </p>
-          <button className="absolute bottom-10 left-48 bg-white text-center px-5 py1.5 p-2 rounded-lg text-sm font-semibold " onClick={handleRedirect}>
+          <button
+            className="absolute bottom-20 left-44 text-center px-5 py-1.5 p-2 rounded-lg text-sm font-semibold"
+            style={{ backgroundColor: "#FF5733", color: "white" }}
+            onClick={handleRedirect}
+          >
             SHOP NOW
           </button>
+
         </div>
 
         <div className="flex items-center w-3/5">
@@ -167,13 +169,13 @@ function HomePageHotDeals() {
               />
             </svg>
           </button>
-          {/* contecnt of scroll */}
+          {/* content of scroll */}
           <div
-            className=" flex overflow-hidden rounded-xl whitespace-nowrap  relative gap-4 ml-5 "
+            className=" flex overflow-hidden rounded-xl whitespace-nowrap relative gap-4"
             ref={scrollRef}
           >
             {filteredCards.map((event) => {
-              
+
               return (
                 <div
                   key={event.id}
@@ -185,7 +187,7 @@ function HomePageHotDeals() {
                         alt="Your Company"
                         src={event.itemDescription}
                         className="mx-auto w-full h-52 object-cover rounded-xl transition-transform duration-500 ease-in-out transform hover:scale-105"
-                        // width={200}
+                      // width={200}
                       />
                     </div>
                     <div className="flex justify-end mb-2 mr-4">
@@ -225,7 +227,7 @@ function HomePageHotDeals() {
                       </div>
                       <div className="absolute bottom-5 flex items-end justify-center w-72 h-16">
                         <button
-                          className="bg-red-400 text-white mt-10 mr-3  w-3/4   py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg hover:bg-red-600 "
+                          className="bg-red-400 text-white mt-10 mr-3 w-3/4 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg hover:bg-red-600 "
                           onClick={() => navigate("/details", { state: event })}
                         >
                           Buy now

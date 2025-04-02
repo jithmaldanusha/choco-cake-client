@@ -172,8 +172,6 @@ function ViewProductsAdmin() {
   };
 
 
-  
-
   useEffect(() => {
     // Fetch all products once when component mounts
     const fetchProducts = async () => {
