@@ -104,21 +104,21 @@ function SignUp() {
 
   return (
     <div>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-xl bg-gray-100 rounded-3xl">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-black">
+        <div className="sm:mx-auto sm:w-full sm:max-w-xl rounded-3xl border border-white">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-5">
             <img
               alt="Your Company"
               src="images/CompanyLogo.png"
               className="mx-auto"
               width={75}
-              // height={30}
+            // height={30}
             />
-            <h2 className="mt-2 text-center text-3xl font-bold leading-9 tracking-wider text-gray-900">
+            <h2 className="mt-2 text-center text-3xl font-bold leading-9 tracking-wider" style={{ color: '#FF7E00' }}>
               Welcome
             </h2>
-            <p className="mt-3 font-light text-sm">
-            Create your account to unlock personalized recommendations,{" "}
+            <p className="mt-3 text-center text-white text-sm">
+              Create your account to unlock personalized recommendations,
             </p>
           </div>
 
@@ -133,7 +133,7 @@ function SignUp() {
                 placeholder="Username"
                 value={formik.values.username}
                 onChange={formik.handleChange("username")}
-                className="block w-full mb-4 rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"
               />
 
               {/* Firstname input field */}
@@ -144,8 +144,7 @@ function SignUp() {
                 placeholder="Firstname"
                 value={formik.values.firstname}
                 onChange={formik.handleChange("firstname")}
-                className="block w-full mb-4 rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              />
+                className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"              />
               {formik.errors.firstname ? (
                 <div className="text-red-500">{formik.errors.firstname}</div>
               ) : null}
@@ -158,8 +157,7 @@ function SignUp() {
                 placeholder="Lastname"
                 value={formik.values.lastname}
                 onChange={formik.handleChange("lastname")}
-                className="block w-full mb-4 rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              />
+                className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"              />
               {formik.errors.lastname ? (
                 <div className="text-red-500">{formik.errors.lastname}</div>
               ) : null}
@@ -172,8 +170,7 @@ function SignUp() {
                 placeholder="Contact number"
                 value={formik.values.contactnumber}
                 onChange={formik.handleChange("contactnumber")}
-                className="block w-full mb-4 rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              />
+                className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"              />
               {formik.errors.contactnumber ? (
                 <div className="text-red-500">
                   {formik.errors.contactnumber}
@@ -188,8 +185,7 @@ function SignUp() {
                 onChange={(date) => formik.setFieldValue("dateOfBirth", date)}
                 dateFormat="yyyy-MM-dd"
                 placeholderText="Select your date of birth"
-                className="block w-full mb-4 rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              />
+                className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"              />
               {formik.errors.dateOfBirth ? (
                 <div className="text-red-500">{formik.errors.dateOfBirth}</div>
               ) : null}
@@ -202,8 +198,7 @@ function SignUp() {
                 placeholder="Shipping Address"
                 value={formik.values.shippingaddress}
                 onChange={formik.handleChange("shippingaddress")}
-                className="block w-full mb-4 rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              />
+                className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"              />
               {formik.errors.shippingaddress ? (
                 <div className="text-red-500">
                   {formik.errors.shippingaddress}
@@ -218,8 +213,7 @@ function SignUp() {
                 placeholder="E-mail"
                 value={formik.values.email}
                 onChange={formik.handleChange("email")}
-                className="block w-full mb-4 rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              />
+                className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"              />
               {formik.errors.email ? (
                 <div className="text-red-500">{formik.errors.email}</div>
               ) : null}
@@ -233,8 +227,7 @@ function SignUp() {
                   placeholder="Password"
                   value={formik.values.password}
                   onChange={formik.handleChange("password")}
-                  className="block w-full rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-                />
+                  className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"                />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -263,8 +256,7 @@ function SignUp() {
                   placeholder="Confirm Password"
                   value={formik.values.confirmPassword}
                   onChange={formik.handleChange("confirmPassword")}
-                  className="block w-full rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-                />
+                  className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"                />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -303,45 +295,20 @@ function SignUp() {
               <div className="">
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-red-400 px-3 py-3.5 text-base font-bold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
+                  className="flex w-full justify-center rounded-md bg-[#FF7E00] px-3 py-3.5 text-base font-bold leading-6 text-white shadow-sm hover:bg-[#e66e00] active:bg-[#cc6100] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF7E00]"
+                  >
                   Sign Up
                 </button>
               </div>
             </form>
 
-            <div className="flex justify-center items-center font-medium text-xs mt-2 mb-3">
+            <div className="flex justify-center items-center font-medium text-white text-xs mt-2 mb-3">
               <p>Already have an account?</p>
               <a href="/login" className="ml-1 text-red-400">
                 Sign In
               </a>
             </div>
 
-            {/* the horizontal line with the or */}
-            {/* <div className="flex items-center justify-center ">
-              <hr className="border border-gray-300 mt-1 w-full"></hr>
-              <p className="ml-3 mr-3 text-gray-400 text-sm">or</p>
-              <hr className="border border-gray-300 mt-1 w-full"></hr>
-            </div> */}
-
-            {/* Google button */}
-            {/* <div>
-              <a
-                href="https://backend.spkstore.lk/gAuth/auth/google"
-                className="ml-5"
-              >
-                <button className="flex w-full mb-5 justify-center rounded-md m-0 bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  <img
-                    src="https://static.vecteezy.com/system/resources/previews/010/353/285/non_2x/colourful-google-logo-on-white-background-free-vector.jpg"
-                    alt=""
-                    width={25}
-                    height={50}
-                    className="mr-3 "
-                  />
-                  <p className="tracking-wide text-base ">Google</p>
-                </button>
-              </a>
-            </div> */}
           </div>
         </div>
       </div>

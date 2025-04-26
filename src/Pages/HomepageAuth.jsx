@@ -8,6 +8,7 @@ import HomepagePopular from "../Components/HomepagePopular";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
+import CategoryCard from "../Components/CategoryCard";
 
 function HomepageAuth() {
   // const cookieget = Cookies.get("memberToken");
@@ -45,8 +46,8 @@ function HomepageAuth() {
   };
 
 
-   //navigate to the drones page
-   const handleRedirect = () => {
+  //navigate to the drones page
+  const handleRedirect = () => {
     navigate('/drones');
   };
 
@@ -55,39 +56,49 @@ function HomepageAuth() {
   };
 
   // Inside your component
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
+  const categoriesData = [
+    {
+      title: 'Lemon',
+      imageSrc: 'images/Category1.png',
+    },
+    {
+      title: 'Butter',
+      imageSrc: 'images/Category2.png',
+    },
+    {
+      title: 'Cream',
+      imageSrc: 'images/Category3.png',
+    },
+    {
+      title: 'Chocolate',
+      imageSrc: 'images/Category4.png',
+    },]
 
   return (
-    <div>
+    <div className="bg-black">
       <Navbar data={username} />
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 ">
-          <Carousel slideInterval={3000}>
+      <div className="flex min-h-full flex-1 flex-col justify-center">
+        <div className="sm:h-80 md:h-96 lg:h-[25rem] xl:h-[30rem] 2xl:h-[35rem]">
+          <Carousel slideInterval={3000} className="carousel">
+            <img
+              src="images/HomeImage3.png"
+              alt="..."
+            />
+            <img
+              src="images/HomeImage2.png"
+              alt="..."
+            />
             <img
               src="images/HomeImage.png"
-              alt="..."
-            />
-            <img
-              src="images/EndImage.png"
-              alt="..."
-            />
-            <img
-              src="images/HomeImage.png"
-              alt="..."
-            />
-            <img
-              src="images/EndImage.png"
-              alt="..."
-            />
-            <img
-               src="images/HomeImage.png"
               alt="..."
             />
           </Carousel>
         </div>
-        <div className="p-5 mt-3 sm:mx-auto sm:w-full sm:max-w-xl 2xl:max-w-7xl">
+        <div className="p-5 mt-3 sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
+
           <div className="text-center p-5 mt-8">
             <h3 className="text-xl font-bold tracking-wide">Our Categories</h3>
             <p className="font-semibold text-gray-400 tracking-wide mt-1">
@@ -95,71 +106,18 @@ const navigate = useNavigate();
             </p>
           </div>
 
-          <div className="2xl:flex flex-row align-middle items-center p-3 justify-between">
-            {/* one category */}
-            <div className="flex flex-col text-center font-semibold text-sm m-2">
-              <div className="flex flex-col p-7 pl-10 pr-10 bg-gray-100 rounded-md h-64 w-64"> 
-            <a href={"/gimbles"}>
-                  <img
-                    alt="Your Company"
-                    src="images/Gimbles.png"
-                    className="mx-auto  hover:scale-x-110 hover:scale-y-110 hover:transition duration-500 ease-in-out"
-                    width={200}
-                    // height={30}
-                  />
-                </a>
-              </div>
-              <p className="mt-2">Gimbal</p>
+          {/* categories section */}
+          <section className="categories-section">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {categoriesData.map((category, index) => (
+                <CategoryCard
+                  key={index}
+                  imageSrc={category.imageSrc}
+                  title={category.title}
+                />
+              ))}
             </div>
-            {/* one category */}
-            <div className="flex flex-col text-center font-semibold text-sm m-2">
-               <div className="flex flex-col p-7 pl-10 pr-10 bg-gray-100 rounded-md h-64 w-64"> 
-            <a href={"/drones"}>
-
-                <img
-                  alt="Your Company"
-                  src="images/Drones.png"
-                  className="mx-auto hover:scale-x-110 hover:scale-y-110 hover:transition duration-500 ease-in-out mt-10"
-                  width={200}
-                  // height={30}
-                  />
-                  </a>
-              </div>
-              <p className="mt-2">Drone & Accessories</p>
-            </div>
-            {/* one category */}
-            <div className="flex flex-col text-center font-semibold text-sm m-2">
-               <div className="flex flex-col p-7 pl-10 pr-10 bg-gray-100 rounded-md h-64 w-64"> 
-            <a href={"/smartwatches"}>
-
-                <img
-                  alt="Your Company"
-                  src="images/Smartwatches.png"
-                  className="mx-auto hover:scale-x-110 hover:scale-y-110 hover:transition duration-500 ease-in-out mt-4"
-                  width={200}
-                  // height={30}
-                  />
-                  </a>
-              </div>
-              <p className="mt-2">Smart Watch</p>
-            </div>
-            {/* one category */}
-            <div className="flex flex-col text-center font-semibold text-sm m-2">
-              <div className="flex flex-col  p-7 pl-10 pr-10 bg-gray-100 rounded-md">
-                <a href={"/others"}>
-
-                <img
-                  alt="Your Company"
-                  src="images/others1.png"
-                  className="mx-auto hover:scale-x-110 hover:scale-y-110 hover:transition duration-500 ease-in-out mt-4"
-                  width={200}
-                  // height={30}
-                  />
-                  </a>
-              </div>
-              <p className="mt-2">Other Accessories</p>
-            </div>
-          </div>
+          </section>
 
           {/* fre ship sectoin */}
           <div className="2xl:flex align-middle items-center p-3 justify-between bg-gray-100 rounded-md mt-12 ">
@@ -172,14 +130,14 @@ const navigate = useNavigate();
                     src="/images/Vector.png"
                     className="mx-auto relative "
                     width={80}
-                    // height={30}
+                  // height={30}
                   />
                   <img
                     alt="Your Companyx"
                     src="/images/freeShipping.png"
                     className="mx-auto absolute bottom-0  mb-3 ml-4"
                     width={50}
-                    // height={30}
+                  // height={30}
                   />
                 </div>
               </div>
@@ -199,14 +157,14 @@ const navigate = useNavigate();
                     src="/images/Vector.png"
                     className="mx-auto relative "
                     width={80}
-                    // height={30}
+                  // height={30}
                   />
                   <img
                     alt="Your Companyx"
                     src="/images/OnetoOne.png"
                     className="mx-auto absolute bottom-0 ml-4 mb-1"
                     width={50}
-                    // height={30}
+                  // height={30}
                   />
                 </div>
               </div>
@@ -226,14 +184,14 @@ const navigate = useNavigate();
                     src="/images/Vector.png"
                     className="mx-auto relative "
                     width={80}
-                    // height={30}
+                  // height={30}
                   />
                   <img
                     alt="Your Companyx"
                     src="/images/EasyPayment.png"
                     className="mx-auto absolute bottom-0 ml-1 mb-3 right-3"
                     width={50}
-                    // height={30}
+                  // height={30}
                   />
                 </div>
               </div>
@@ -253,14 +211,14 @@ const navigate = useNavigate();
                     src="/images/Vector.png"
                     className="mx-auto relative "
                     width={80}
-                    // height={30}
+                  // height={30}
                   />
                   <img
                     alt="Your Companyx"
                     src="/images/Online.png"
                     className="mx-auto absolute bottom-0 ml-1 right-3 mb-2"
                     width={50}
-                    // height={30}
+                  // height={30}
                   />
                 </div>
               </div>
@@ -295,8 +253,8 @@ const navigate = useNavigate();
                     alt="Your Company"
                     src="images/handpic.png"
                     className=" absolute h-96  bottom-0 right-16 "
-                    // width={900}
-                    // height={30}
+                  // width={900}
+                  // height={30}
                   />
                 </div>
               </div>
@@ -313,7 +271,7 @@ const navigate = useNavigate();
                 Score Big Saving on Sport Gear
               </h2>
               <p className="mt-5 text-white">
-              Explore a wide range of products across various categories, from drones and gimbals to smartwatches and more. We are excited to announce that you can enjoy discounts of up to 20% on selected items!{" "}
+                Explore a wide range of products across various categories, from drones and gimbals to smartwatches and more. We are excited to announce that you can enjoy discounts of up to 20% on selected items!{" "}
 
               </p>
               <div className="flex align-middle items-center justify-between mt-10">
@@ -383,8 +341,8 @@ const navigate = useNavigate();
           alt="Your Company"
           src="images/EndImage.png"
           className="w-full"
-          //   width={550}
-          // height={}
+        //   width={550}
+        // height={}
         />
       </div>
 

@@ -55,7 +55,7 @@ function SignIn() {
             Cookies.set("memberToken", token, { expires: 1 });
             const cookieget = Cookies.get("memberToken");
             console.log(cookieget);
-            navigate("/auth");
+            navigate("/");
           }
           // setAlertMsg(true);
           // again after expire on token
@@ -66,21 +66,21 @@ function SignIn() {
 
   return (
     <div>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
-        <div className="sm:mx-auto sm:w-full sm:max-w-xl bg-gray-100 rounded-3xl">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-black">
+        <div className="sm:mx-auto sm:w-full sm:max-w-xl rounded-3xl border border-white">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm  mt-5">
             <img
               alt="Your Company"
               src="images/CompanyLogo.png"
               className="mx-auto"
               width={75}
-              // height={30}
+            // height={30}
             />
-            <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-wider text-gray-900">
+            <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-wider" style={{ color: '#FF7E00' }}>
               WELCOME BACK
             </h2>
-            <p className="mt-2 font-light text-sm">
-            Sign in to access your account and continue exploring our latest products
+            <p className="mt-2 text-white text-sm">
+              Sign in to access your account and continue exploring our latest products
             </p>
           </div>
 
@@ -95,10 +95,12 @@ function SignIn() {
                   placeholder="E-mail"
                   value={formik.values.Memberemail}
                   onChange={formik.handleChange("Memberemail")}
-                  className="block w-full mb-4 rounded-md border-0 py-2.0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 sm:max-w-md"
+                  className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"
                 />
+
+
                 {formik.errors.Memberemail ? (
-                  <div className="text-red-500 ">
+                  <div className="text-red-500 mb-3">
                     {formik.errors.Memberemail}
                   </div>
                 ) : null}
@@ -111,27 +113,28 @@ function SignIn() {
                   placeholder="Password"
                   value={formik.values.MemberPassword}
                   onChange={formik.handleChange("MemberPassword")}
-                  className="block w-full mb-4 rounded-md border-0 py-2.0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-semibold focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 sm:max-w-md"
+                  className="block w-full mb-2 rounded-md bg-transparent border border-white py-2 px-3 text-white placeholder-gray-400 font-semibold focus:border-[#FF7E00] focus:text-white focus:outline-none focus:ring-1 focus:ring-[#FF7E00] sm:text-sm sm:leading-6"
                 />
+
                 {formik.errors.MemberPassword ? (
-                  <div className="text-red-500">
+                  <div className="text-red-500 mb-3">
                     {formik.errors.MemberPassword}
                   </div>
                 ) : null}
 
-              
+
 
                 <div className="">
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md bg-red-400 px-3 py-3.5 text-base font-bold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center rounded-md bg-[#FF7E00] px-3 py-3.5 text-base font-bold leading-6 text-white shadow-sm hover:bg-[#e66e00] active:bg-[#cc6100] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF7E00]"
                   >
                     Sign in
                   </button>
                 </div>
               </div>
 
-              <div className="flex justify-center items-center font-medium text-xs mt-2 mb-3">
+              <div className="flex justify-center items-center text-white font-medium text-xs mt-2 mb-3">
                 <p>Don't have and account?</p>
                 <a href="/signup" className="ml-1 text-red-400">
                   Sign Up
@@ -146,7 +149,7 @@ function SignIn() {
             </div>
 
             <div className="flex w-full mb-4 items-end align-middle justify-center mt-5">
-              <div className=" border"></div>
+              <div className="border"></div>
               <div className="pl-5 pr-5">
                 <GoogleLogin
                   onSuccess={(credentialResponse) => {

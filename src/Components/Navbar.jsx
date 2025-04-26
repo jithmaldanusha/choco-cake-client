@@ -87,7 +87,7 @@ function Navbar({ data }) {
         {/* SPK Logo image */}
         <div className="flex items-center ml-9">
           <img
-            src="/images/chocologo.png"
+            src="/images/CompanyLogo.png"
             alt="SPK Store Logo"
             className="h-14"
           />
@@ -137,25 +137,25 @@ function Navbar({ data }) {
               to="/drones"
               className="block px-4 py-2 text-black hover:text-red-500 font-bold"
             >
-              Drones
+              Products
             </Link>
             <Link
               to="/gimbles"
               className="block px-4 py-2 text-black hover:text-red-500 font-bold"
             >
-              Gimbles
+              Contact Us
             </Link>
             <Link
               to="/smartwatches"
               className="block px-4 py-2 text-black hover:text-red-500 font-bold"
             >
-              Smart Watch
+              Delivery
             </Link>
             <Link
               to="/others"
               className="block px-4 py-2 text-black hover:text-red-500 font-bold"
             >
-              Other Accessories
+              About Us
             </Link>
           </div>
 
@@ -171,25 +171,25 @@ function Navbar({ data }) {
               to="/drones"
               className="text-black hover:text-red-500 font-bold"
             >
-              Drones
+              Products
             </Link>
             <Link
               to="/gimbles"
               className="text-black hover:text-red-500 font-bold"
             >
-              Gimbles
+              Contact Us
             </Link>
             <Link
               to="/smartwatches"
               className="text-black hover:text-red-500 font-bold"
             >
-              Smart Watch
+              Delivery
             </Link>
             <Link
               to="/others"
               className="text-black hover:text-red-500 font-bold"
             >
-              Other Accessories
+              About Us
             </Link>
           </div>
         </div>

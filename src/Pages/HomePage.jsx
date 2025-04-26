@@ -10,11 +10,32 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
 import CategoryCard from "../Components/CategoryCard";
 import FeatureCard from "../Components/FeatureCard";
+
+import "../css/homepage.css";
 // responsive enable
 function Homepage() {
 
+  // const cookieget = Cookies.get("memberToken");
+
+  // const decoded = jwtDecode(cookieget);
+
+  // checking logged user
+  const cookieget = Cookies.get("memberToken");
+  // const decoded = jwtDecode(cookieget);
+  // console.log(decoded.given_name);
+
+  let username = "";
+
+  if (cookieget) {
+    const decoded = jwtDecode(cookieget);
+    if (decoded.given_name) {
+      username = decoded.given_name;
+    } else {
+      username = decoded.username || "";
+    }
+  }
+
   const curRef = useRef();
-  // Inside your component
   const navigate = useNavigate();
 
   const eventScroll = (direction) => {
@@ -30,6 +51,10 @@ function Homepage() {
   };
 
   const handleShopNow = () => {
+    navigate('/drones');
+  };
+
+  const handleRedirect = () => {
     navigate('/drones');
   };
 
@@ -54,10 +79,10 @@ function Homepage() {
 
   return (
     <div className="bg-black">
-      <Navbar />
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <Navbar data={username} />
+      <div className="flex min-h-full flex-1 flex-col justify-center">
         <div className="sm:h-80 md:h-96 lg:h-[25rem] xl:h-[30rem] 2xl:h-[35rem]">
-          <Carousel slideInterval={3000}>
+          <Carousel slideInterval={3000} className="carousel">
             <img
               src="images/HomeImage3.png"
               alt="..."
@@ -76,7 +101,7 @@ function Homepage() {
         <div className="p-5 mt-3 sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
 
           <div className="text-center p-5 mt-8">
-            <h3 className="text-xl font-bold tracking-wide">Our Categories</h3>
+            <h3 className="text-xl font-bold text-white tracking-wide">Our Categories</h3>
             <p className="font-semibold text-gray-400 tracking-wide mt-1">
               Explore our main categories on the go
             </p>
@@ -133,12 +158,12 @@ function Homepage() {
             />
           </div>
 
-          <h2 className="text-left text-white mt-12 font-bold text-xl">Hot Deals</h2>
-
           {/* hot deal section */}
+          <h2 className="text-left text-white mt-12 font-bold text-xl">Hot Deals</h2>
           <HomePageHotDeals />
+
           {/* popular products */}
-          <h2 className="text-left mt-12 font-bold text-xl mb-10">
+          <h2 className="text-left mt-12 text-white font-bold text-xl mb-10">
             Popular Products
           </h2>
 

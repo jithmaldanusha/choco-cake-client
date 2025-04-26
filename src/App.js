@@ -34,7 +34,7 @@ function App() {
         <Route path='/auth' element={<HomepageAuth/>}/>
         <Route path='/login' element={<SignIn/>}/>
         <Route path='/drones' element={<DronesPage/>}/>
-        <Route path='/admin' element={<AddProduct/>}/>
+        <Route path='/admin' element={<AdminDashboard/>}/>
         <Route path='/myproducts' element={<ViewProductsAdmin/>}/>
         <Route path='/details' element={<ProductDetails/>}/>
         <Route path='/' element={<Homepage/>}/>
@@ -52,7 +52,7 @@ function App() {
         <Route path='/userdash' element={<UserDashboard/>}/>
         <Route path='/privacy' element={<PrivacyPolicy/>}/>
         <Route path='/ordersforTrack' element={<OrdersforTracking/>}/>
-        <Route path='/dashboard' element={<AdminDashboard/>}/>
+        <Route path='/addproduct' element={<AddProduct/>}/>
         <Route path='/prodDetails' element={<ProductDetailsAdmin/>}/>
         <Route path='/guestPrivacy' element={<GuestPrivacyPolicy/>}/>
         {/* <Route path='/sideCart' element={<CartSideBar/>}/> */}

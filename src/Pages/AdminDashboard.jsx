@@ -51,7 +51,7 @@ const AdminDashboard = () => {
           {/* Company image */}
           <div className="flex flex-col items-center space-y-2">
             <img
-              src="/images/spklogo.png"
+              src="/images/CompanyLogo.png"
               alt="SPK Store"
               style={{ width: "8rem", height: "8rem" }}
             />
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
           <nav className="mt-10 space-y-2">
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/dashboard")}
+              onClick={() => (window.location.href = "/admin")}
             >
               <img
                 src="/images/dashboardiconblack.png"
@@ -71,7 +71,7 @@ const AdminDashboard = () => {
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
+              onClick={() => (window.location.href = "/addproduct")}
             >
               <img
                 src="/images/Addimage.png"

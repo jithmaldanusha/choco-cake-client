@@ -166,7 +166,7 @@ function AddProduct() {
           <nav className="mt-10 space-y-2">
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/dashboard")}
+              onClick={() => (window.location.href = "/admin")}
             >
               <img
                 src="/images/dashboardiconblack.png"
@@ -177,7 +177,7 @@ function AddProduct() {
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
+              onClick={() => (window.location.href = "/addproduct")}
             >
               <img
                 src="/images/Addimage.png"
