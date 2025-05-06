@@ -14,8 +14,9 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
       <ul className="pagination hidden sm:flex sm:flex-1 sm:items-center">
         <li className="page-item">
           <a
-            className="page-link relative inline-flex items-center bg-gray-100 rounded-full px-2 py-2 ml-2 mr-2 text-gray-400 hover:bg-gray-200 focus:outline-none transition-transform transform hover:scale-110 focus:ring-2 focus:ring-indigo-600"
+            className="page-link relative inline-flex items-center rounded-full px-2 py-2 ml-2 mr-2 text-white hover:bg-gray-200 focus:outline-none transition-transform transform hover:scale-110 focus:ring-2 focus:ring-indigo-600"
             onClick={goToPrevPage}
+            style={{ background: "#FF7E00" }}
             href="#"
           >
             <svg
@@ -39,9 +40,10 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             key={pgNumber}
             className={`page-item ${
               currentPage == pgNumber
-                ? "relative ml-1 mr-1 z-10 inline-flex items-center rounded-full bg-red-400  py-1 text-sm font-semibold text-white focus:outline-none ring-2 ring-red-400"
+                ? "relative ml-1 mr-1 z-10 inline-flex items-center rounded-full bg-red-400  py-1 text-sm font-semibold text-black focus:outline-none ring-2 ring-red-400"
                 : "ml-1 mr-1 inline-flex items-center rounded-full py-1 text-sm font-semibold text-gray-900 hover:bg-gray-200 focus:outline-none transition-transform transform hover:scale-110"
             } `}
+            style={{ backgroundColor: '#F4DFC8' }}
           >
             <a
               onClick={() => setCurrentPage(pgNumber)}
@@ -54,8 +56,9 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
         ))}
         <li className="page-item">
           <a
-            className="page-link relative inline-flex items-center bg-gray-100 rounded-full px-2 py-2 ml-2 mr-2 text-gray-400 hover:bg-gray-200 focus:outline-none transition-transform transform hover:scale-110 focus:ring-2 focus:ring-indigo-600"
+            className="page-link relative inline-flex items-center bg-gray-100 rounded-full px-2 py-2 ml-2 mr-2 text-white hover:bg-gray-200 focus:outline-none transition-transform transform hover:scale-110 focus:ring-2 focus:ring-indigo-600"
             onClick={goToNextPage}
+            style={{ background: "#FF7E00" }}
             href="#"
           >
             <svg

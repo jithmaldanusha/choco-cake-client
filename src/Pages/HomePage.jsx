@@ -10,11 +10,32 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
 import CategoryCard from "../Components/CategoryCard";
 import FeatureCard from "../Components/FeatureCard";
+
+import "../css/homepage.css";
 // responsive enable
 function Homepage() {
 
+  // const cookieget = Cookies.get("memberToken");
+
+  // const decoded = jwtDecode(cookieget);
+
+  // checking logged user
+  const cookieget = Cookies.get("memberToken");
+  // const decoded = jwtDecode(cookieget);
+  // console.log(decoded.given_name);
+
+  let username = "";
+
+  if (cookieget) {
+    const decoded = jwtDecode(cookieget);
+    if (decoded.given_name) {
+      username = decoded.given_name;
+    } else {
+      username = decoded.username || "";
+    }
+  }
+
   const curRef = useRef();
-  // Inside your component
   const navigate = useNavigate();
 
   const eventScroll = (direction) => {
@@ -30,6 +51,10 @@ function Homepage() {
   };
 
   const handleShopNow = () => {
+    navigate('/drones');
+  };
+
+  const handleRedirect = () => {
     navigate('/drones');
   };
 
@@ -53,11 +78,11 @@ function Homepage() {
   ];
 
   return (
-    <div className="">
-      <Navbar />
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="bg-black">
+      <Navbar data={username} />
+      <div className="flex min-h-full flex-1 flex-col justify-center">
         <div className="sm:h-80 md:h-96 lg:h-[25rem] xl:h-[30rem] 2xl:h-[35rem]">
-          <Carousel slideInterval={3000}>
+          <Carousel slideInterval={3000} className="carousel">
             <img
               src="images/HomeImage3.png"
               alt="..."
@@ -76,7 +101,7 @@ function Homepage() {
         <div className="p-5 mt-3 sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
 
           <div className="text-center p-5 mt-8">
-            <h3 className="text-xl font-bold tracking-wide">Our Categories</h3>
+            <h3 className="text-xl font-bold text-white tracking-wide">Our Categories</h3>
             <p className="font-semibold text-gray-400 tracking-wide mt-1">
               Explore our main categories on the go
             </p>
@@ -102,16 +127,16 @@ function Homepage() {
               subIcon="/images/freeShipping.png"
               title="Free Shipping"
               description="Free shipping for all fully paid items"
-              subIconStyles="bottom-0 mb-3 ml-4"
+              subIconStyles="bottom-0"
             />
 
             {/* One to One Warranty */}
             <FeatureCard
               icon="/images/Vector.png"
               subIcon="/images/OnetoOne.png"
-              title="One to one Warranty"
-              description="Within 30 days for an exchange"
-              subIconStyles="bottom-0 ml-4 mb-1"
+              title="Delivery With Care"
+              description="Eye catching packaging with care"
+              subIconStyles="bottom-0"
             />
 
             {/* Easy Payment */}
@@ -120,7 +145,7 @@ function Homepage() {
               subIcon="/images/EasyPayment.png"
               title="Easy Payment"
               description="Pay with multiple Credit Cards"
-              subIconStyles="bottom-0 right-3 ml-1 mb-3"
+              subIconStyles="bottom-0"
             />
 
             {/* Online Support */}
@@ -129,16 +154,16 @@ function Homepage() {
               subIcon="/images/Online.png"
               title="Online Support"
               description="24/7 Support"
-              subIconStyles="bottom-0 right-3 ml-1 mb-2"
+              subIconStyles="bottom-0"
             />
           </div>
 
-          <h2 className="text-left mt-12 font-bold text-xl">Hot Deals</h2>
-
           {/* hot deal section */}
+          <h2 className="text-left text-white mt-12 font-bold text-xl">Hot Deals</h2>
           <HomePageHotDeals />
+
           {/* popular products */}
-          <h2 className="text-left mt-12 font-bold text-xl mb-10">
+          <h2 className="text-left mt-12 text-white font-bold text-xl mb-10">
             Popular Products
           </h2>
 
@@ -163,85 +188,22 @@ function Homepage() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col mt-10 ">
-              <h2 className="font-bold text-3xl text-white">
-                Score Big Saving on Sport Gear
-              </h2>
-              <p className="mt-5 text-white">
-                Explore a wide range of products across various categories, from drones and gimbals to smartwatches and more. We are excited to announce that you can enjoy discounts of up to 20% on selected items!{" "}
-              </p>
-              <div className="flex align-middle items-center justify-between mt-10">
-                <h1 className="text-8xl font-semibold text-left text-white">
-                  20%
-                </h1>
-                <button className="border px-10 py-2.5 rounded-md mr-28 font-bold text-white tracking-wide outline outline-2" onClick={handleShopNow}>
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* brands */}
-
-          <div className="2xl:flex flex-col mt-20 sm:hidden ">
-            <div className="w-full bg-zinc-100 min-h-[5px] max-md:max-w-full" />
-            <div className="flex gap-5 justify-between items-center mt-7 w-full max-md:flex-wrap max-md:max-w-full">
-              <img
-                alt="Your Company"
-                src="/images/Rectangle 407.png"
-                width={80}
-                className="shrink-0 self-stretch max-w-full aspect-[1.82] w-[115px]"
-              />
-              <img
-                alt="Your Company"
-                src="/images/Rectangle 408.png"
-                width={80}
-                className="shrink-0 self-stretch my-auto max-w-full aspect-[3.7] w-[182px]"
-              />
-              <img
-                alt="Your Company"
-                src="/images/Rectangle 410.png"
-                width={80}
-                className="shrink-0 self-stretch my-auto aspect-[1.64] w-[94px]"
-              />
-              <img
-                alt="Your Company"
-                src="/images/Potensic.png"
-                width={80}
-                className="shrink-0 self-stretch max-w-full aspect-[3.03] w-[193px]"
-              />
-              <img
-                alt="Your Company"
-                src="/images/Zeblaze.png"
-                width={80}
-                className="shrink-0 self-stretch my-auto max-w-full aspect-[2.94] w-[161px]"
-              />
-              <img
-                alt="Your Company"
-                src="/images/Aochuan.png"
-                width={80}
-                className="shrink-0 self-stretch my-auto max-w-full aspect-[4.17] w-[213px]"
-              />
-            </div>
-            <div className="mt-7 w-full bg-zinc-100 min-h-[5px] max-md:max-w-full" />
           </div>
 
           {/* comments */}
+
           <HomepageComments />
         </div>
 
         {/* the big image */}
       </div>
-      <div className="h-56 sm:h-64 xl:h-80 2xl:h-full max-w-full">
+      <div className="">
         <img
           alt="Your Company"
           src="images/EndImage.png"
-          className="w-full"
-        //   width={550}
-        // height={}
+          className="w-full h-auto block"
         />
       </div>
-
       <Footer />
     </div>
   );

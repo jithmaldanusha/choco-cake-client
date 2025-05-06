@@ -167,10 +167,10 @@ function Checkout() {
 
   //hushmithe
   let deliverCost = 0;
-  let techcost=0;
+  let techcost = 0;
   //====== deliver cost logic==============
   if (payMethod === "new-card") {
-    techcost=(totalPrice*3)/100;
+    techcost = (totalPrice * 3) / 100;
     deliverCost = 350.0 + techcost;
 
 
@@ -309,7 +309,7 @@ function Checkout() {
           // setCheckoutData(jsonObject);
           // Send email notification
           sendOrderNotification(jsonObject);
- 
+
           // Navigate to the success page
           navigate("/success", { state: dataToOrder, replace: true });
         }
@@ -342,19 +342,19 @@ function Checkout() {
   };
 
   return (
-    <div>
+    <div className="bg-black" style={{ background: "" }} >
       <Navbar data={username} />
 
       <div className="flex flex-col items-center align-middle max-w-full ">
         {/* main topic */}
 
-        <div className="bg-[#F96969] py-8 px-8 mt-1 w-[110%] -ml-[10%] mx-auto">
-          <h1 className="text-4xl font-semibold text-center text-white ml-20 mt-2">
+        <div className="bg-green-600 py-8 px-8 mt-1 w-[110%] -ml-[10%] mx-auto">
+          <h1 className="text-4xl font-semibold text-center ml-20 mt-2">
             Checkout ({itemsCount} items)
             {/* Checkout */}
           </h1>
         </div>
-        <div className="2xl:bg-white py-8 px-40 flex flex-col items-start">
+        <div className="py-8 px-40 flex flex-col items-start">
           <div className="flex gap-x-1">
             {/* paynow section */}
             <MyContext.Provider value={{ text, setText }}>
@@ -362,17 +362,17 @@ function Checkout() {
                 {/* <Paynow /> */}
                 {/* paynow components render here */}
 
-                <div className="p-4 mx-auto  w-[770px] -ml-[26px] rounded-md bg-gray-50">
+                <div className="p-4 mx-auto  w-[770px] -ml-[26px] rounded-md bg-[#F4DFC8]">
                   {/* Title for payment options */}
                   <h2 className="text-lg font-bold mb-4">Pay with</h2>
 
                   {/* Horizontal line separator */}
-                  <hr className="border-t border-gray-300 w-full my-2" />
+                  <hr className="border-t border-black w-full my-2" />
 
                   <div className="space-y-4">
                     {/* Add new card section */}
                     <div className="flex flex-col">
-                      <div className="flex items-center border-b pb-4 border-gray-300">
+                      <div className="flex items-center border-b pb-4 border-black">
                         {/* Radio button for "Add new card" payment method */}
                         <input
                           type="radio"
@@ -400,54 +400,51 @@ function Checkout() {
                             <img
                               src="/images/Rectangle 887.png"
                               alt="Visa"
-                              className="h-8"
+                              className="h-8 bg-white"
                             />
                             {/* MasterCard image */}
                             <img
                               src="/images/mastercardx.png"
                               alt="MasterCard"
-                              className="h-8"
+                              className="h-8 bg-white"
                             />
                             {/* American Express image */}
                             <img
                               src="/images/american.png"
                               alt="Amex"
-                              className="h-8"
+                              className="h-8 bg-white"
                             />
                           </div>
-                          
-                        </label>
-                        
-                      </div>
-                    
-                  
 
+                        </label>
+
+                      </div>
 
 
                       {/* Section shown if "Add new card" is selected */}
                       {selectedPayment === "new-card" && (
                         <div className="p-4 mt-4 border border-gray-300 rounded-md">
-                           <p className="mt-4 mb-4">
-                      The <strong>total amount of the goods</strong>, <strong>delivery charges</strong>, and additionally 
-                      <strong>3% of technical payment charges</strong> should be payed
-                      </p>
+                          <p className="mt-4 mb-4">
+                            The <strong>total amount of the goods</strong>, <strong>delivery charges</strong>, and additionally
+                            <strong>3% of technical payment charges</strong> should be payed
+                          </p>
 
-                      <p className="mt-4 mb-4">
-                      <strong>අනුමත භාණ්ඩ වල මුළු මිල,</strong> <strong>බෙදාහැරීමේ ගාස්තු,</strong> හා 
-                      <strong>තවදුරටත් තාක්ෂණික ගෙවීම් ගාස්තු 3%</strong> ක් ගෙවිය යුතුය
-                      </p>
+                          <p className="mt-4 mb-4">
+                            <strong>අනුමත භාණ්ඩ වල මුළු මිල,</strong> <strong>බෙදාහැරීමේ ගාස්තු,</strong> හා
+                            <strong>තවදුරටත් තාක්ෂණික ගෙවීම් ගාස්තු 3%</strong> ක් ගෙවිය යුතුය
+                          </p>
 
 
 
-                      <p className="mt-4 mb-4">
-                      <strong>பொருட்களின் மொத்த தொகை,</strong> <strong>டெலிவரி கட்டணங்கள்,</strong> மற்றும் 
-                      <strong>3% தொழில்நுட்ப கட்டணங்களும்</strong> செலுத்தப்பட வேண்டும்
-                      </p>
+                          <p className="mt-4 mb-4">
+                            <strong>பொருட்களின் மொத்த தொகை,</strong> <strong>டெலிவரி கட்டணங்கள்,</strong> மற்றும்
+                            <strong>3% தொழில்நுட்ப கட்டணங்களும்</strong> செலுத்தப்பட வேண்டும்
+                          </p>
 
 
                           {/* Button to trigger the upload section */}
                           <button
-                            className="px-4 py-2 bg-red-500 text-white rounded-md"
+                            className="px-4 py-2 bg-[#FF7E00] text-white rounded-md"
                             onClick={handleButtonClick}
                           >
                             Pay here
@@ -519,33 +516,28 @@ function Checkout() {
 
                       {/* Section shown if "Bank Transfer" is selected */}
                       {selectedPayment === "bank-transfer" && (
-                        <div className="p-4 mt-4 border border-gray-300 rounded-md">
-                         
+                        <div className="p-4 mt-4 border border-black rounded-md">
+
                           <p className="text-gray-700 mb-2">
-                          The <strong>total amount of the goods</strong> you buy and the <strong>delivery charges: 350/=</strong> should be 
-                            deposited into one of the following bank accounts, and the receipt should be uploaded there.  
-                          We confirm the order only if it is successful after your deposit verification.
+                            The <strong>total amount of the goods</strong> you buy and the <strong>delivery charges: 350/=</strong> should be
+                            deposited into one of the following bank accounts, and the receipt should be uploaded there.
+                            We confirm the order only if it is successful after your deposit verification.
                           </p>
 
 
                           <p className="text-gray-700 mb-4 mt-3">
-                            ඔබ මිලදී ගන්නා <strong>භාණ්ඩ වල මුළු මුදල</strong> සහ <strong>බෙදා හැරීමේ ගාස්තුව: රු. 350/=</strong> පහත සඳහන් බැංකු ගිණුම්වලට තැන්පත් කළ යුතුය, 
+                            ඔබ මිලදී ගන්නා <strong>භාණ්ඩ වල මුළු මුදල</strong> සහ <strong>බෙදා හැරීමේ ගාස්තුව: රු. 350/=</strong> පහත සඳහන් බැංකු ගිණුම්වලට තැන්පත් කළ යුතුය,
                             සහ රිසිට්පත එතැන උඩුගත කළ යුතුය. ඔබගේ තැන්පතුව සාර්ථකව තහවුරු කිරීමෙන් පසු පමණක් අපි ඇනවුම තහවුරු කරමු.
                           </p>
 
 
                           <p className="text-gray-700 mb-4 mt-3">
-                            நீங்கள் வாங்கும் <strong>பொருட்களின் மொத்த தொகை</strong> மற்றும் <strong>டெலிவரி கட்டணம்: ரூ. 350/=</strong> கீழே குறிப்பிடப்பட்டுள்ள வங்கிக் கணக்குகளில் செலுத்தப்பட வேண்டும், 
+                            நீங்கள் வாங்கும் <strong>பொருட்களின் மொத்த தொகை</strong> மற்றும் <strong>டெலிவரி கட்டணம்: ரூ. 350/=</strong> கீழே குறிப்பிடப்பட்டுள்ள வங்கிக் கணக்குகளில் செலுத்தப்பட வேண்டும்,
                             மற்றும் ரசீது அங்கு பதிவேற்றப்பட வேண்டும். உங்கள் செலுத்துதல் வெற்றிகரமாக சரிபார்க்கப்பட்ட பிறகே நாங்கள் ஆர்டரை உறுதிப்படுத்துவோம்.
                           </p>
 
 
 
-
-
-
-
-                          
                           <div className="mb-2">
                             {/* Display bank details */}
                             <span className="block text-gray-700">
@@ -645,11 +637,11 @@ function Checkout() {
                               </span>
                             </span>
                           </div>
-                          
+
 
                           {/* Button to trigger the upload section */}
                           <button
-                            className="px-4 py-2 bg-red-500 text-white rounded-md"
+                            className="px-4 py-2 bg-[#FF7E00] text-white rounded-md"
                             onClick={handleUploadClick}
                             style={{ marginLeft: "520px" }} // Adjusted margin for positioning
                           >
@@ -658,7 +650,7 @@ function Checkout() {
 
                           {/* Upload section visibility */}
                           {uploadSectionVisible && (
-                            <div className="p-4 mt-4 border border-gray-300 rounded-md">
+                            <div className="p-4 mt-4 border border-black rounded-md">
                               <p className="text-gray-700 mb-2">
                                 Upload Your Bank Slip here
                               </p>
@@ -741,30 +733,26 @@ function Checkout() {
 
                       {/* Section shown if "Cash on Delivery" is selected */}
                       {selectedPayment === "cod" && (
-                        <div className="p-4 mt-4 border border-gray-300 rounded-md">
-                         
+                        <div className="p-4 mt-4 border border-black rounded-md">
+
                           <p className="text-gray-700 mb-2">
-                          In here <strong>ONLY THE DELIVERY CHARGES</strong> should be deposited into one of the following bank accounts,
-                          and the receipt should be uploaded there. We confirm the order only if it is successful after your
-                          deposit verification.
+                            In here <strong>ONLY THE DELIVERY CHARGES</strong> should be deposited into one of the following bank accounts,
+                            and the receipt should be uploaded there. We confirm the order only if it is successful after your
+                            deposit verification.
                           </p>
 
                           <p className="text-gray-700 mb-5 mt-5">
-                            මෙහිදී <strong>බෙදා හැරීමේ ගාස්තු පමණක්</strong> පහත සඳහන් බැංකු ගිණුම්වලට තැන්පත් කළ යුතුය, 
+                            මෙහිදී <strong>බෙදා හැරීමේ ගාස්තු පමණක්</strong> පහත සඳහන් බැංකු ගිණුම්වලට තැන්පත් කළ යුතුය,
                             සහ රිසිට්පත එතැන උඩුගත කළ යුතුය. ඔබගේ තැන්පතුව සාර්ථකව තහවුරු කිරීමෙන් පසු පමණක් අපි ඇනවුම තහවුරු කරමු.
                           </p>
 
 
- 
+
                           <p className="text-gray-700 mb-5 mt-5">
-                            இங்கே <strong>டெலிவரி கட்டணம் மட்டும்</strong> கீழே குறிப்பிடப்பட்டுள்ள வங்கிக் கணக்குகளில் செலுத்தப்பட வேண்டும், 
+                            இங்கே <strong>டெலிவரி கட்டணம் மட்டும்</strong> கீழே குறிப்பிடப்பட்டுள்ள வங்கிக் கணக்குகளில் செலுத்தப்பட வேண்டும்,
                             மற்றும் ரசீது அங்கு பதிவேற்றப்பட வேண்டும். உங்கள் செலுத்துதல் வெற்றிகரமாக சரிபார்க்கப்பட்ட பிறகே நாங்கள் ஆர்டரை உறுதிப்படுத்துவோம்.
                           </p>
 
-
-
-
-                         
 
                           <div className="mb-2">
                             {/* Display bank details */}
@@ -868,21 +856,9 @@ function Checkout() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                           {/* Button to trigger the upload section */}
                           <button
-                            className="px-4 py-2 bg-red-500 text-white rounded-md"
+                            className="px-4 py-2 bg-[#FF7E00] text-white rounded-md"
                             onClick={handleUploadClick}
                             style={{ marginLeft: "520px" }} // Adjusted margin for positioning
                           >
@@ -891,7 +867,7 @@ function Checkout() {
 
                           {/* Upload section visibility */}
                           {uploadSectionVisible && (
-                            <div className="p-4 mt-4 border border-gray-300 rounded-md">
+                            <div className="p-4 mt-4 border border-black rounded-md">
                               <p className="text-gray-700 mb-2">
                                 Upload Your Bank Slip here
                               </p>
@@ -943,7 +919,7 @@ function Checkout() {
             </MyContext.Provider>
 
             {/* Order summary section */}
-            <div className=" rounded-md p-6  h-[300px] w-[400px] ml-auto mt-12 bg-gray-50">
+            <div className=" rounded-md p-6  h-[300px] w-[400px] ml-auto mt-12 bg-[#F4DFC8]">
               {/* order summary first line and the second line */}
               <div className="border-b pb-4 mb-4">
                 {/* order summary first line */}
@@ -979,7 +955,7 @@ function Checkout() {
               {/* confirm and pay button */}
               <button
                 onClick={handleConfirmPay}
-                className="bg-red-500 text-white w-full py-2 rounded-md flex items-center justify-center mt-8"
+                className="bg-[#FF7E00] text-white w-full py-2 rounded-md flex items-center justify-center mt-8"
               >
                 <img src="/images/confirmpay.png" alt=" " className="mr-2 h-6" />
                 Confirm and pay
@@ -994,7 +970,7 @@ function Checkout() {
           </div>
 
           {/* ship to section starts */}
-          <div className=" rounded-md p-6 mb-5 w-full mt-10  max-w-3xl bg-gray-50">
+          <div className=" rounded-md p-6 mb-5 w-full mt-10  max-w-3xl bg-[#F4DFC8]">
             {/* call the ShipTo component */}
             <ShipTo />
           </div>

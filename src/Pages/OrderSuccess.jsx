@@ -43,7 +43,7 @@ const OrderSuccess = () => {
   };
 
   return (
-    <div>
+    <div className="bg-black text-white">
       <Navbar data={username} />
 
       <div className="max-w-7xl mx-auto p-6 space-y-8">
@@ -79,7 +79,7 @@ const OrderSuccess = () => {
           </p>
           <p
             className="mt-0 text-md font-semibold float-left"
-            style={{ color: "#757575" }}
+            style={{ color: "#FF7E00" }}
           >
             <button onClick={handleTrack}>Track your order</button>
           </p>
@@ -87,9 +87,9 @@ const OrderSuccess = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
-            <h2 className="text-2xl font-bold">Confirmation</h2>
+            <h2 className="text-2xl text-green-600 font-bold mt-5">Confirmation</h2>
 
-            <div className="space-y-4">
+            <div className="space-y-4 border border-white rounded-lg p-3">
               <h3 className="text-xl font-bold">Order information</h3>
 
               <div className="flex items-center space-x-2">
@@ -114,7 +114,7 @@ const OrderSuccess = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 border border-white rounded-lg p-3">
               <h3 className="text-xl font-bold">Shipping details</h3>
 
               <div style={{ marginBottom: "3px" }}>
@@ -130,7 +130,7 @@ const OrderSuccess = () => {
             </div>
           </div>
 
-          <div className="space-y-4" style={{ marginTop: "60px" }}>
+          <div className="space-y-4 border border-white rounded-lg p-3" style={{ marginTop: "80px" }}>
             <h3 className="text-xl font-bold">Payment information</h3>
 
             <div className="mt-2 mr-3">

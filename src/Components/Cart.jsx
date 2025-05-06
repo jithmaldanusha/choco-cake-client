@@ -25,13 +25,13 @@ function Cart() {
     const decoded = jwtDecode(cookieget);
     username = decoded.username || "";
   }
- 
-let count = 0;
+
+  let count = 0;
   // Initialize cart items with default quantity of 1
   const initialCartItems = datas.map((item) => ({
     ...item,
-    count : parseInt(item.quantity),
-    
+    count: parseInt(item.quantity),
+
     quantity: 1, // Start quantity from 1
   }));
 
@@ -46,13 +46,13 @@ let count = 0;
   // Handle quantity change
   const handleQuantityChange = (id, change) => {
     console.log("Quantity change triggered", id, change); // Debugging line
-  
+
     setCartItems((prevItems) => {
       return prevItems.map((item) => {
         if (item.itemID === id) {
           const newQuantity = item.quantity + change;
           console.log(newQuantity);
-  
+
           // Handle increment
           if (change > 0) {
             if (newQuantity > item.count) { // Assuming you have a max quantity for each item
@@ -60,7 +60,7 @@ let count = 0;
               return item; // Return the item unchanged
             }
           }
-  
+
           // Handle decrement
           if (change < 0) {
             if (newQuantity < 1) {
@@ -68,10 +68,10 @@ let count = 0;
               return item; // Return the item unchanged
             }
           }
-  
+
           // Return updated item if all checks pass
-            // Clear error if quantity is valid
-            setItemErrors((prev) => ({ ...prev, [id]: null }));
+          // Clear error if quantity is valid
+          setItemErrors((prev) => ({ ...prev, [id]: null }));
           return { ...item, quantity: newQuantity };
         }
         return item;
@@ -115,12 +115,12 @@ let count = 0;
   );
 
   return (
-    <div>
+    <div className="bg-black">
       <Navbar data={username} />
 
       <div className="container mx-auto p-4 mt-10 mb-10">
         {/* Text your cart */}
-        <h2 className="text-2xl font-bold mb-4 ml-32">
+        <h2 className="text-2xl text-white font-bold mb-4 ml-32">
           Your Cart ({cartItems.length} items)
         </h2>
 
@@ -130,7 +130,7 @@ let count = 0;
               // The cards
               <div
                 key={item.id}
-                className="flex items-center bg-gray-100 p-5 mb-5 ml-32 rounded-md"
+                className="flex items-center bg-[#F4DFC8] p-5 mb-5 ml-32 rounded-md"
                 style={{ width: "800px" }}
               >
                 {/* Image */}
@@ -161,7 +161,7 @@ let count = 0;
                     )}
                   </div>
                 </div>
-                    
+
                 {itemErrors[item.itemID] && (
                   <div className="text-red-500 mr-3">{itemErrors[item.itemID]}</div>
                 )}
@@ -200,13 +200,13 @@ let count = 0;
           </div>
 
           <div className="w-full md:w-1/3 mr-12">
-            <div className="bg-gray-100 p-4 rounded-md">
+            <div className="bg-[#F4DFC8] p-4 rounded-md">
               {/* Price details text */}
               <div className="flex items-center mb-9">
                 <h3 className="text-lg font-bold mr-2">Price Details</h3>
                 <span className="text-sm font-bold" style={{ color: "#757575" }}>
-  ({cartItems.length} items)
-</span>
+                  ({cartItems.length} items)
+                </span>
               </div>
 
               {/* Subtotal text */}
@@ -229,7 +229,7 @@ let count = 0;
 
               {/* Checkout button */}
               <button
-                className="w-full mt-4 bg-red-500 text-white py-2 rounded-md"
+                className="w-full mt-4 bg-[#FF7E00] text-white py-2 rounded-md"
                 onClick={() => {
                   navigate("/checkout", {
                     state: {

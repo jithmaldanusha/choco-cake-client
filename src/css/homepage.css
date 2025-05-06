@@ -1,0 +1,12 @@
+.carousel div {
+    border-radius: 0 !important;
+}
+
+.carousel span {
+    background-color: #FF7E00;
+}
+
+.carousel span:hover {
+    background-color: #9a4d00!important;
+    border: none;
+}

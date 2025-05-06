@@ -47,16 +47,16 @@ function AdminMyOrder() {
   // };
 
   return (
-<div className="flex bg-red-300">
-{/* Sidebar */}
-      <aside style={{ width: "15rem" }} className="h-screen bg-red-300">
+    <div className="flex bg-red-300">
+      {/* Sidebar */}
+      <aside style={{ width: "15rem" }} className="h-screen bg-[#6C070E]">
         {/* Calling the Navbar component */}
         <aside style={{ width: "15rem" }} className="h-screen">
           <div className="p-6">
             {/* company image */}
             <div className="flex flex-col items-center space-y-2">
               <img
-                src="/images/spklogo.png"
+                src="/images/companyLogo.png"
                 alt="SPK Store"
                 style={{ width: "8rem", height: "8rem" }}
               />
@@ -65,25 +65,36 @@ function AdminMyOrder() {
             <nav className="mt-10 space-y-2">
               <button
                 className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-                onClick={() => (window.location.href = "/dashboard")}
+                onClick={() => (window.location.href = "/admin")}
               >
                 <img
-                    src="/images/dashboardiconblack.png"
+                  src="/images/dashboardiconblack.png"
                   alt="Dashboard"
                   className="h-6 w-6"
                 />
-                <span className="font-semibold">Dashboard</span>
+                <span className="font-semibold text-[#FF7E00]">Dashboard</span>
               </button>
               <button
                 className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-                onClick={() => (window.location.href = "/admin")}
+                onClick={() => (window.location.href = "/addproduct")}
               >
                 <img
                   src="/images/Addimage.png"
                   alt="Addimage"
                   className="h-6 w-6"
                 />
-                <span className="font-semibold">Add Product</span>
+                <span className="font-semibold text-[#FF7E00]">Add Product</span>
+              </button>
+              <button
+                className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
+                onClick={() => (window.location.href = "/myproducts")}
+              >
+                <img
+                  src="/images/Addimage.png"
+                  alt="My Products"
+                  className="h-6 w-6"
+                />
+                <span className="font-semibold text-[#FF7E00]">My Products</span>
               </button>
               <button
                 className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
@@ -94,7 +105,7 @@ function AdminMyOrder() {
                   alt="ShoppingBag"
                   className="h-6 w-6"
                 />
-                <span className="font-semibold">My Order</span>
+                <span className="font-semibold text-[#FF7E00]">My Order</span>
               </button>
             </nav>
           </div>
@@ -160,8 +171,8 @@ function AdminMyOrder() {
                           order.status === "confirmed"
                             ? "green"
                             : order.status === "delivered"
-                            ? "purple"
-                            : "red",
+                              ? "purple"
+                              : "red",
                         fontWeight: "bold",
                       }}
                     >

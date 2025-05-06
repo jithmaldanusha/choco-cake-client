@@ -25,7 +25,6 @@ const Records = ({ data }) => {
         // send data with items and user
         await axios.post("https://backend.spkstore.lk/cart/addToCart",
           { items, user: decoded },
-          { withCredentials: true }
         );
       } catch (error) {
         console.error("Error adding to cart:", error);
@@ -39,7 +38,7 @@ const Records = ({ data }) => {
   // Handle card click
   const handleCardClick = async (item) => {
     // Check if the item is out of stock
-    if (item.quantity  <=  0 ) {
+    if (item.quantity <= 0) {
       console.warn("Item is out of stock and cannot be selected.");
       return; // Exit if the item is not available
     }
@@ -75,7 +74,7 @@ const Records = ({ data }) => {
 
   return (
     <>
-      <div className="flex flex-wrap max-w-7xl gap-5 ">
+      <div className="flex flex-wrap max-w-7xl gap-5 " style={{ color: "black" }} >
         {data.map((item) => {
           const isSelected = selectedItems.some(
             (selectedItem) => selectedItem._id === item._id
@@ -85,7 +84,7 @@ const Records = ({ data }) => {
               key={item._id}
               className="flex-none mx-2 h-96 w-72 relative m-6 group"
             >
-              <div className="flex flex-col text-center font-semibold text-sm m-2 bg-gray-50 rounded-xl h-full w-full">
+              <div className="flex flex-col text-center font-semibold text-sm m-2 bg-gray-50 rounded-xl h-full w-full" style={{ background: "#F4DFC8" }}>
                 {/* <!-- Image Section --> */}
                 <div className="flex flex-col p-4 flex-grow ">
                   <img
@@ -95,26 +94,13 @@ const Records = ({ data }) => {
                   />
                 </div>
 
-
-
-
-
-
                 {/* <!-- Add to Cart Button --> */}
-                <div className="flex justify-between mb-2 mr-4">
-
-                  {
-                    item.quantity > 0 ?  <div className="mt-2 ml-4  p-1 bg-green-100 text-lg text-green-600"><h1>In stock</h1></div> : <div className="mt-2 ml-4 p-1 bg-red-100 text-lg text-red-600"><h1>Out Of Stock</h1></div>
-                  }
-                  
-
-
+                <div className="flex mb-2 ml-4">
 
                   {/* add to cart button badge */}
                   <button
-                    className={`rounded-full p-2 shadow-md transition-transform transform hover:scale-110 ${
-                      isSelected ? "bg-red-300 text-white" : "bg-gray-300"
-                    }`}
+                    className={`rounded-full p-2 shadow-md transition-transform transform hover:scale-110 ${isSelected ? "bg-red-300 text-white" : "bg-gray-300"
+                      }`}
                     onClick={() => handleCardClick(item)}
                   >
                     <svg
@@ -158,7 +144,12 @@ const Records = ({ data }) => {
                 </div>
                 <div className="absolute inset-y-80 flex items-end  justify-center  w-72 h-12">
                   <button
-                    className="bg-red-400 text-white mt-10 ml-3 mr-3  w-full   py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg hover:bg-red-600 "
+                    className="text-black mt-10 mr-3 w-3/4 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg"
+                    style={{
+                      backgroundColor: "#FF7E00",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e56f00")}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FF7E00")}
                     onClick={() => navigate("/details", { state: item })}
                   >
                     Buy now

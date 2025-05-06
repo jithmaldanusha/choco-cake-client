@@ -136,7 +136,7 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="">
+    <div className="" >
       <Navbar data={username}/>
 
       <div className="min-h-screen flex">
@@ -148,6 +148,7 @@ const UserDashboard = () => {
         <div className="w-3/4 p-8 mt-10">
           <div
             className="bg-white p-6 shadow-lg border border-black rounded-lg"
+            // style={{background: "#F4DFC8"}}
             
           >
             {/* General Overview title */}
@@ -302,7 +303,7 @@ const UserDashboard = () => {
           {/* Change password section */}
           <div
             className="bg-white p-6 rounded-lg shadow-lg mt-8"
-            style={{ border: "1px solid black", borderRadius: "8px" }}
+            style={{ border: "1px solid black", borderRadius: "8px", background: "" }}
           >
             {/* Change password label */}
             <h2 className="text-xl font-bold text-black-500 mt-6">

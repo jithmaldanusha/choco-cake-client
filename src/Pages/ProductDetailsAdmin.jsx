@@ -12,8 +12,8 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
 function ProductDetailsAdmin() {
- 
-  
+
+
   const location = useLocation();
   const data = location.state;
 
@@ -23,7 +23,7 @@ function ProductDetailsAdmin() {
 
   let numb = parseInt(data.quantity);
 
-  
+
   return (
     <div className="flex max-8xl bg-red-300">
       {/* <Navbar data={username}/> */}
@@ -42,7 +42,7 @@ function ProductDetailsAdmin() {
           <nav className="mt-10 space-y-2">
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/dashboard")}
+              onClick={() => (window.location.href = "/admin")}
             >
               <img
                 src="/images/dashboardiconblack.png"
@@ -53,7 +53,7 @@ function ProductDetailsAdmin() {
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
+              onClick={() => (window.location.href = "/addproduct")}
             >
               <img
                 src="/images/Addimage.png"
@@ -61,6 +61,17 @@ function ProductDetailsAdmin() {
                 className="h-6 w-6"
               />
               <span className="font-semibold">Add Product</span>
+            </button>
+            <button
+              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
+              onClick={() => (window.location.href = "/myproducts")}
+            >
+              <img
+                src="/images/Addimage.png"
+                alt="My Products"
+                className="h-6 w-6"
+              />
+              <span className="font-semibold">My Products</span>
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
@@ -154,13 +165,12 @@ function ProductDetailsAdmin() {
             <div>
               {/* In stock tag */}
               <span
-                className={`text-lg font-semibold px-4 py-2 rounded ${
-                  data.quantity > 0 
+                className={`text-lg font-semibold px-4 py-2 rounded ${data.quantity > 0
                   ? "bg-[#00C06026] text-[#00C060]"
                   : "bg-[#FF000026] text-[#FF0000]"
-              }`}
+                  }`}
               >
-                 {data.quantity > 0 ? "In stock" : "Out Of Stock"}
+                {data.quantity > 0 ? "In stock" : "Out Of Stock"}
               </span>
 
               {/* Product title */}

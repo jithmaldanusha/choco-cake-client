@@ -48,7 +48,7 @@ function UserMyOrder() {
   console.log(orders);
 
   return (
-    <div>
+    <div className="" >
       <Navbar data={username} />
 
       <div className="min-h-screen bg-white-100 flex">
@@ -60,7 +60,7 @@ function UserMyOrder() {
         <div className="w-3/4 p-8 mt-10">
           <div
             className="bg-white p-6 rounded-lg shadow-lg "
-            style={{ border: "1px solid black", borderRadius: "8px" }}
+            style={{ border: "1px solid black", borderRadius: "8px", background: "" }}
           >
             <h2 className="text-2xl font-bold text-red-500">My Orders</h2>
 

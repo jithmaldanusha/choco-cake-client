@@ -23,7 +23,7 @@ function AddProduct() {
     offers: "",
     originalPrice: "",
     priceAfterDiscount: "",
-    warranty: "",
+    warranty: 0,
     quantity: "",
     camera: "",
     range: "",
@@ -56,28 +56,25 @@ function AddProduct() {
     formik.setFieldValue("itemType", selectedItemType);
 
     // Update the boolean state to diable the
-    setIsDroneSelected(selectedItemType === "Drone");
-    setIsGimbalSelected(selectedItemType === "Gimbal");
-    setIsSmartWatchSelected(selectedItemType === "SmartWatch");
+    setIsDroneSelected(selectedItemType === "Cake");
+    setIsGimbalSelected(selectedItemType === "Cupcake");
+    setIsSmartWatchSelected(selectedItemType === "Dessert");
     setIsOtherSelected(selectedItemType === "Other");
 
     let brands = [];
     switch (selectedItemType) {
-      case "Drone":
-        brands = ["DJI", "Potensic", "FIMI"];
+      case "Cake":
+        brands = ["Chocolate", "Butter", "Ghetto", "Spocge", "Cofee"];
         break;
-      case "Gimbal":
-        brands = ["Hohem", "Zhiyun", "AOCHUAN", "DJI", "AXNEN"];
+      case "Cupcake":
+        brands = ["Vanilla", "Chocolate", "Red-Velvet", "Other"];
         break;
-      case "SmartWatch":
-        brands = ["ZeBlaze", "CMF", "Redmi", "Hayolu"];
+      case "Dessert":
+        brands = ["Pudding", "Jelly", "Brownies"];
         break;
       case "Other":
         brands = [
-          "Drone accessories",
-          "Mobile phone accessories",
-          "Smart Devices",
-          "Storage devices",
+          "IceCream",
         ];
         break;
       default:
@@ -139,25 +136,25 @@ function AddProduct() {
         .then((response) => {
           console.log(response.data);
           setShowAlert(true);
-          
-    
+
+
         });
 
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 9000);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 9000);
     },
   });
 
   return (
     <div className="flex bg-red-300 ">
-      <aside style={{ width: "15rem" }} className="h-screen">
+      <aside style={{ width: "15rem" }} className="h-screen bg-[#6C070E]">
         <div className="p-6">
           {/* company image */}
           <div className="flex flex-col items-center space-y-2">
             <img
-              src="/images/spklogo.png"
-              alt="SPK Store"
+              src="/images/CompanyLogo.png"
+              alt="choco"
               style={{ width: "8rem", height: "8rem" }}
             />
           </div>
@@ -165,25 +162,36 @@ function AddProduct() {
           <nav className="mt-10 space-y-2">
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/dashboard")}
+              onClick={() => (window.location.href = "/admin")}
             >
               <img
                 src="/images/dashboardiconblack.png"
                 alt="Dashboard"
                 className="h-6 w-6"
               />
-              <span className="font-semibold">Dashboard</span>
+              <span className="font-semibold text-[#FF7E00]">Dashboard</span>
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
+              onClick={() => (window.location.href = "/addproduct")}
             >
               <img
                 src="/images/Addimage.png"
                 alt="Addimage"
                 className="h-6 w-6"
               />
-              <span className="font-semibold">Add Product</span>
+              <span className="font-semibold text-[#FF7E00]">Add Product</span>
+            </button>
+            <button
+              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
+              onClick={() => (window.location.href = "/myproducts")}
+            >
+              <img
+                src="/images/Addimage.png"
+                alt="My Products"
+                className="h-6 w-6"
+              />
+              <span className="font-semibold text-[#FF7E00]">MY Products</span>
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
@@ -194,7 +202,7 @@ function AddProduct() {
                 alt="ShoppingBag"
                 className="h-6 w-6"
               />
-              <span className="font-semibold">My Order</span>
+              <span className="font-semibold text-[#FF7E00]">My Order</span>
             </button>
           </nav>
         </div>
@@ -257,9 +265,9 @@ function AddProduct() {
                       placeholder="Iten TYpe"
                     >
                       <option>Select item type</option>
-                      <option>Drone</option>
-                      <option>Gimbal</option>
-                      <option>SmartWatch</option>
+                      <option>Cake</option>
+                      <option>Cupcake</option>
+                      <option>Dessert</option>
                       <option>Other</option>
                     </select>
                     {formik.touched.itemType && formik.errors.itemType ? (
@@ -280,7 +288,7 @@ function AddProduct() {
 
                     disabled={!formik.values.itemType} // Disable if item type is not selected
                   >
-                    <option>Select brand</option>
+                    <option>Select Sub-Category</option>
                     {formik.values.brand.map((brand, index) => (
                       // <option key={index} value={brand} label={brand} />
                       <option key={index}>{brand}</option>
@@ -306,7 +314,7 @@ function AddProduct() {
                     placeholder="Short Description"
                   />
                   {formik.touched.shortDescription &&
-                  formik.errors.shortDescription ? (
+                    formik.errors.shortDescription ? (
                     <div className="text-red-500">
                       {formik.errors.shortDescription}
                     </div>
@@ -361,7 +369,7 @@ function AddProduct() {
                       placeholder="Original price"
                     />
                     {formik.touched.originalPrice &&
-                    formik.errors.originalPrice ? (
+                      formik.errors.originalPrice ? (
                       <div className="text-red-500">
                         {formik.errors.originalPrice}
                       </div>
@@ -380,7 +388,7 @@ function AddProduct() {
                       placeholder="Price after discount"
                     />
                     {formik.touched.priceAfterDiscount &&
-                    formik.errors.priceAfterDiscount ? (
+                      formik.errors.priceAfterDiscount ? (
                       <div className="text-red-500">
                         {formik.errors.priceAfterDiscount}
                       </div>
@@ -407,7 +415,7 @@ function AddProduct() {
                     ) : null}
                   </div>
 
-                  <div className="w-full ">
+                  {/* <div className="w-full ">
                     <input
                       // id="itemName"
                       name="warranty"
@@ -423,10 +431,10 @@ function AddProduct() {
                         {formik.errors.warranty}
                       </div>
                     ) : null}
-                  </div>
+                  </div> */}
                 </div>
 
-                <div className="flex gap-6 mb-5">
+                {/* <div className="flex gap-6 mb-5">
                   <div className="w-full">
                     <select
                       name="camera"
@@ -474,10 +482,10 @@ function AddProduct() {
                       <div className="text-red-500">{formik.errors.range}</div>
                     ) : null}
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex mb-5">
-                  <div>
+                  {/* <div>
                     <select
                       name="flyTime"
                       value={formik.values.flyTime}
@@ -495,30 +503,30 @@ function AddProduct() {
                         {formik.errors.flyTime}
                       </div>
                     ) : null}
-                  </div>
+                  </div> */}
                   {/* preorder */}
                   {/* <div>
-                <select
-                  name="range"
-                  value={formik.values.range}
-                  onChange={formik.handleChange("range")}
-                  className="w-full p-2 border border-gray-300 rounded"
-                  placeholder="range"
-                >
-                  <option>Offers</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                 
-                </select>
-                {formik.touched.range && formik.errors.range ? (
-                    <div className="text-red-500">
-                      {formik.errors.range}
-                    </div>
-                  ) : null}
-              </div> */}
+                    <select
+                      name="range"
+                      value={formik.values.range}
+                      onChange={formik.handleChange("range")}
+                      className="w-full p-2 border border-gray-300 rounded"
+                      placeholder="range"
+                    >
+                      <option>Offers</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    
+                    </select>
+                    {formik.touched.range && formik.errors.range ? (
+                        <div className="text-red-500">
+                          {formik.errors.range}
+                        </div>
+                      ) : null}
+                  </div> */}
                 </div>
 
-                <div className="flex gap-6 mb-5">
+                {/* <div className="flex gap-6 mb-5">
                   <div className="w-full">
                     <select
                       name="axis"
@@ -531,7 +539,7 @@ function AddProduct() {
                         IsSmartWatchSelected ||
                         IsOtherSelected
                       }
-                      // disabled={IsSmartWatchSelected}
+                    // disabled={IsSmartWatchSelected}
                     >
                       <option>Select axis option</option>
                       <option>3 axis</option>
@@ -596,7 +604,7 @@ function AddProduct() {
                       </div>
                     ) : null}
                   </div>
-                </div>
+                </div> */}
                 <div>
                   <div className="mb-5 mt-5">
                     <div className="flex items-center justify-center w-full">
@@ -642,7 +650,7 @@ function AddProduct() {
                           // value={formik.values.itemsWithAccessoriesImages1}
                           onChange={handleImageUpload}
                           multiple
-                          // onBlur={formik.handleBlur}
+                        // onBlur={formik.handleBlur}
                         />
                       </label>
                     </div>
@@ -664,7 +672,7 @@ function AddProduct() {
                           for="dropzone-file1"
                           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                         >
-                          <p className="">Item Accesscories images left</p>
+                          <p className="">Item images left</p>
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg
                               className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -704,12 +712,12 @@ function AddProduct() {
                                 e.currentTarget.files[0]
                               );
                             }}
-                            // onBlur={formik.handleBlur}
+                          // onBlur={formik.handleBlur}
                           />
                         </label>
                       </div>
                       {formik.touched.itemsWithAccessoriesImages1 &&
-                      formik.errors.itemsWithAccessoriesImages1 ? (
+                        formik.errors.itemsWithAccessoriesImages1 ? (
                         <div className="text-red-500">
                           {formik.errors.itemsWithAccessoriesImages1}
                         </div>
@@ -721,7 +729,7 @@ function AddProduct() {
                           for="dropzone-file2"
                           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                         >
-                          <p className="">Item Accesscories images middle</p>
+                          <p className="">Item images middle</p>
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg
                               className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -761,12 +769,12 @@ function AddProduct() {
                                 e.currentTarget.files[0]
                               );
                             }}
-                            // onBlur={formik.handleBlur}
+                          // onBlur={formik.handleBlur}
                           />
                         </label>
                       </div>
                       {formik.touched.itemsWithAccessoriesImages2 &&
-                      formik.errors.itemsWithAccessoriesImages2 ? (
+                        formik.errors.itemsWithAccessoriesImages2 ? (
                         <div className="text-red-500">
                           {formik.errors.itemsWithAccessoriesImages2}
                         </div>
@@ -778,7 +786,7 @@ function AddProduct() {
                           for="dropzone-file3"
                           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                         >
-                          <p className="">Item Accesscories images right</p>
+                          <p className="">Item images right</p>
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg
                               className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -818,12 +826,12 @@ function AddProduct() {
                                 e.currentTarget.files[0]
                               );
                             }}
-                            // onBlur={formik.handleBlur}
+                          // onBlur={formik.handleBlur}
                           />
                         </label>
                       </div>
                       {formik.touched.itemsWithAccessoriesImages3 &&
-                      formik.errors.itemsWithAccessoriesImages3 ? (
+                        formik.errors.itemsWithAccessoriesImages3 ? (
                         <div className="text-red-500">
                           {formik.errors.itemsWithAccessoriesImages3}
                         </div>
@@ -852,7 +860,7 @@ function AddProduct() {
                 </div>
                 <div className="relative border border-gray-400 p-5 m-3">
                   <p className="absolute top-0 left-0 -mt-3 ml-3  px-5 bg-gray-100 text-lg font-semibold">
-                    Technical Specification
+                    Poduct Specification
                   </p>
 
                   <div className="mb-5 mt-4">
@@ -882,7 +890,7 @@ function AddProduct() {
                       placeholder="Description 1"
                     />
                     {formik.touched.description1 &&
-                    formik.errors.description1 ? (
+                      formik.errors.description1 ? (
                       <div className="text-red-500">
                         {formik.errors.description1}
                       </div>
@@ -915,7 +923,7 @@ function AddProduct() {
                       placeholder="Description 2"
                     />
                     {formik.touched.description2 &&
-                    formik.errors.description2 ? (
+                      formik.errors.description2 ? (
                       <div className="text-red-500">
                         {formik.errors.description2}
                       </div>
@@ -948,7 +956,7 @@ function AddProduct() {
                       placeholder="Description 3"
                     />
                     {formik.touched.description3 &&
-                    formik.errors.description3 ? (
+                      formik.errors.description3 ? (
                       <div className="text-red-500">
                         {formik.errors.description3}
                       </div>
@@ -1001,18 +1009,18 @@ function AddProduct() {
                           );
                         }}
                         multiple
-                        // onBlur={formik.handleBlur}
+                      // onBlur={formik.handleBlur}
                       />
                     </label>
                   </div>
                   {formik.touched.itemDescription &&
-                  formik.errors.itemDescription ? (
+                    formik.errors.itemDescription ? (
                     <div className="text-red-500">
                       {formik.errors.itemDescription}
                     </div>
                   ) : null}
                 </div>
-               
+
                 <div className="flex w-full border">
                   <button
                     type="submit"
@@ -1034,17 +1042,6 @@ function AddProduct() {
               </div>
             </div>
           </form>
-          <div className="w-1/2 ">
-            <a href="/myproducts">
-              <button
-                type="button"
-                onClick={() => {}}
-                className="px-4 py-2 bg-red-400 hover:bg-gray-400 text-white rounded w-full"
-              >
-                All my products
-              </button>
-            </a>
-          </div>
         </div>
       </main>
     </div>
