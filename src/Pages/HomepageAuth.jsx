@@ -336,17 +336,15 @@ function HomepageAuth() {
 
         {/* the big image */}
       </div>
-      <div className="h-56 sm:h-64 xl:h-80 2xl:h-full max-w-full">
+      <div className="">
         <img
           alt="Your Company"
           src="images/EndImage.png"
-          className="w-full"
-        //   width={550}
-        // height={}
+          className="w-full h-auto block"
         />
       </div>
+      <Footer/>
 
-      <Footer />
     </div>
   );
 }

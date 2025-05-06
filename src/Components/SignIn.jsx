@@ -178,7 +178,7 @@ function SignIn() {
                           );
                           const cookieget = Cookies.get("memberToken");
                           console.log(cookieget);
-                          navigate("/auth");
+                          navigate("/");
                         });
                     } catch (error) {
                       console.log(error);

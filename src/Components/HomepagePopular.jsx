@@ -18,7 +18,7 @@ function HomepagePopular() {
   // Fetch card data from backend
   useEffect(() => {
 
-    
+
     const fetchCards = async () => {
       try {
         const response = await axios.get(
@@ -90,7 +90,7 @@ function HomepagePopular() {
 
   // Handle card click
   const handleCardClick = async (item) => {
-    
+
     try {
       // Update local state to track selected items
       setSelectedItems((prevSelected) => {
@@ -116,10 +116,11 @@ function HomepagePopular() {
   };
 
   return (
-    <div className="relative w-full flex items-center">
+    <div className="relative w-full flex items-center text-black">
       <button
         onClick={scrollLeft}
-        className="relative top-1/2 left-0 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 "
+        className="relative top-1/2 left-0 transform -translate-y-1/2 p-2 rounded-full shadow-md z-10 "
+        style={{ background: "#FF7E00" }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -142,18 +143,18 @@ function HomepagePopular() {
         className="flex overflow-hidden rounded-xl whitespace-nowrap relative gap-4 ml-5"
       >
         {cards.map((event) => (
-          
+
           <div
             key={event.id}
             className="flex-none mx-2 h-96 w-72 relative group"
           >
-            <div className="flex flex-col text-center font-semibold text-sm m-2 bg-gray-100 rounded-xl h-full w-full">
+            <div className="flex flex-col text-center font-semibold text-sm m-2 rounded-xl h-full w-full" style={{ background: "#F4DFC8" }}>
               <div className="flex flex-col p-4 flex-grow">
                 <img
                   alt="Your Company"
                   src={event.itemDescription}
                   className="mx-auto w-full h-52 object-cover rounded-xl transition-transform duration-500 ease-in-out transform hover:scale-105"
-                  // width={200}
+                // width={200}
                 />
               </div>
               <div className="flex justify-end mb-2 mr-4">
@@ -191,9 +192,14 @@ function HomepagePopular() {
                     <RatingComponent />
                   </p>
                 </div>
-                <div className="absolute inset-y-80 flex items-center mb-5 p-3 justify-center w-72 h-16">
+                <div className="absolute bottom-10 flex items-end justify-center w-72 h-16">
                   <button
-                    className="bg-red-400 text-white mb-4 mr-4  w-full   py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg hover:bg-red-600 "
+                    className="text-black mt-10 mr-3 w-3/4 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg"
+                    style={{
+                      backgroundColor: "#FF7E00",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e56f00")}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FF7E00")}
                     onClick={() => navigate("/details", { state: event })}
                   >
                     Buy now
@@ -207,7 +213,8 @@ function HomepagePopular() {
 
       <button
         onClick={scrollRight}
-        className="relative top-1/2 right-0 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 ml-5"
+        className="relative top-1/2 right-0 transform -translate-y-1/2 p-2 rounded-full shadow-md z-10 ml-5"
+        style={{ background: "#FF7E00" }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

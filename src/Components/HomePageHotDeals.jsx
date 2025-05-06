@@ -76,11 +76,10 @@ function HomePageHotDeals() {
         // send data with items and user
         const response = await axios.post(
           "https://backend.spkstore.lk/cart/addToCart",
-          { items, user: decoded },
-          { withCredentials: true }
+          { items, user: decoded }
         );
 
-        // console.log(response);
+        console.log(response);
       } catch (error) {
         console.error("Error adding to cart:", error);
       }
@@ -115,6 +114,7 @@ function HomePageHotDeals() {
         // }
         // Update count or other state changes
         setCount((prevCount) => prevCount + 1);
+        console.log(count)
 
         return updatedItems;
       });
@@ -152,7 +152,8 @@ function HomePageHotDeals() {
           {/* left side scroll */}
           <button
             onClick={scrollLeft}
-            className="relative top-1/2 left-0 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 "
+            className="relative top-1/2 left-0 transform -translate-y-1/2 p-2 rounded-full shadow-md z-10 "
+            style={{ background: "#FF7E00" }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -181,7 +182,7 @@ function HomePageHotDeals() {
                   key={event.id}
                   className="flex-none mx-2 h-96 w-72 relative group "
                 >
-                  <div className="flex flex-col text-center font-semibold text-sm m-2 bg-gray-100 rounded-xl h-full w-full">
+                  <div className="flex flex-col text-center font-semibold text-sm m-2 rounded-xl h-full w-full" style={{ background: "#F4DFC8" }}>
                     <div className="flex flex-col p-4 flex-grow">
                       <img
                         alt="Your Company"
@@ -225,13 +226,19 @@ function HomePageHotDeals() {
                           <RatingComponent />
                         </p>
                       </div>
-                      <div className="absolute bottom-5 flex items-end justify-center w-72 h-16">
+                      <div className="absolute bottom-10 flex items-end justify-center w-72 h-16">
                         <button
-                          className="bg-red-400 text-white mt-10 mr-3 w-3/4 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg hover:bg-red-600 "
+                          className="text-black mt-10 mr-3 w-3/4 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-100 group-hover:scale-105 shadow-lg"
+                          style={{
+                            backgroundColor: "#FF7E00",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e56f00")}
+                          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FF7E00")}
                           onClick={() => navigate("/details", { state: event })}
                         >
                           Buy now
                         </button>
+
                       </div>
                     </div>
                   </div>
@@ -245,7 +252,8 @@ function HomePageHotDeals() {
 
           <button
             onClick={scrollRight}
-            className="relative top-1/2 right-0 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10 ml-2"
+            className="relative top-1/2 right-0 transform -translate-y-1/2 p-2 rounded-full shadow-md z-10 ml-2"
+            style={{ background: "#FF7E00" }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -89,10 +89,6 @@ const ShipTo = () => {
    ];
 
 
-
-
-
-
   return (
     <div className="max-w-2xl mx-auto p-4 ">
       {/* Form heading */}
@@ -116,7 +112,7 @@ const ShipTo = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.firstName}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border border-[#FF7E00] rounded-md bg-transparent"
             />
             {/* Error message for first name */}
             {formik.touched.firstName && formik.errors.firstName ? (
@@ -136,7 +132,7 @@ const ShipTo = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.lastName}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border border-[#FF7E00] rounded-md bg-transparent"
             />
             {/* Error message for last name */}
             {formik.touched.lastName && formik.errors.lastName ? (
@@ -161,7 +157,7 @@ const ShipTo = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.contactNumber}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border border-[#FF7E00] rounded-md bg-transparent"
             />
             {/* Error message for contact number */}
             {formik.touched.contactNumber && formik.errors.contactNumber ? (
@@ -182,7 +178,7 @@ const ShipTo = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={decoded.email ? decoded.email : formik.values.email}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border border-[#FF7E00] rounded-md bg-transparent"
               placeholder={isEmailDisabled  ? decoded.email : ""} //if decoded mail is present then show email 
               disabled={isEmailDisabled } // and disbaled the input field
             />
@@ -209,7 +205,7 @@ const ShipTo = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.shippingAddress}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border border-[#FF7E00] rounded-md bg-transparent"
             />
             {/* Error message for shipping address */}
             {formik.touched.shippingAddress && formik.errors.shippingAddress ? (
@@ -240,7 +236,7 @@ const ShipTo = () => {
              onChange={formik.handleChange}
              onBlur={formik.handleBlur}
              value={formik.values.district}
-             className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+             className="mt-1 p-2 block w-full border border-[#FF7E00] rounded-md bg-transparent"
            >
              <option value="" label="Select a district" />
              {districts.map(district => (
@@ -273,7 +269,7 @@ const ShipTo = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.nearestCity}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border border-[#FF7E00] rounded-md bg-transparent"
             />
             {/* Error message for nearest city */}
             {formik.touched.nearestCity && formik.errors.nearestCity ? (
@@ -307,7 +303,7 @@ const ShipTo = () => {
           {/* Cancel button */}
           <button
             type="button"
-            className="py-2 px-4 border border-red-500 text-red-500 rounded-md"
+            className="py-2 px-4 border border-[#FF7E00] text-[#FF7E00] rounded-md"
             onClick={() => formik.resetForm()}
           >
             CANCEL
@@ -315,7 +311,7 @@ const ShipTo = () => {
           {/* Save button */}
           <button
             type="submit"
-            className="py-2 px-4 bg-red-500 text-white rounded-md"
+            className="py-2 px-4 bg-[#FF7E00] text-white rounded-md"
           >
             SAVE
           </button>

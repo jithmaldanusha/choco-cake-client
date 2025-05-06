@@ -64,9 +64,9 @@ function Navbar({ data }) {
   const userEvents = () => {
     // navigate to see order of user
     if (cookieget) {
-      
+
       navigate("/userdash");
-    }else{
+    } else {
       navigate("/guestPrivacy")
     }
   };
@@ -79,10 +79,10 @@ function Navbar({ data }) {
   };
 
   // Define the target URL based on the presence of the `data` prop
-  const targetUrl = data ? "/auth" : "/";
+  const targetUrl = "/";
 
   return (
-    <nav className="shadow-md" style={{background: '#FF7E00'}}>
+    <nav className="shadow-md" style={{ background: '#FF7E00' }}>
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         {/* SPK Logo image */}
         <div className="flex items-center ml-9">
@@ -117,15 +117,13 @@ function Navbar({ data }) {
 
         {/* Navigation Links */}
         <div
-          className={`md:flex space-x-8 text-sm font-medium ${
-            isMenuOpen ? "block" : "hidden"
-          } md:block`}
+          className={`md:flex space-x-8 text-sm font-medium ${isMenuOpen ? "block" : "hidden"
+            } md:block`}
         >
           {/* Dropdown for mobile menu */}
           <div
-            className={`md:hidden ${
-              isMenuOpen ? "block" : "hidden"
-            } absolute top-20 left-1/2 transform -translate-x-1/2 w-1/4 bg-white shadow-lg z-10`}
+            className={`md:hidden ${isMenuOpen ? "block" : "hidden"
+              } absolute top-20 left-1/2 transform -translate-x-1/2 w-1/4 bg-white shadow-lg z-10`}
           >
             <Link
               to={targetUrl}
@@ -134,28 +132,16 @@ function Navbar({ data }) {
               Home
             </Link>
             <Link
-              to="/drones"
+              to="/products"
               className="block px-4 py-2 text-black hover:text-red-500 font-bold"
             >
               Products
             </Link>
             <Link
-              to="/gimbles"
+              to="/guestPrivacy"
               className="block px-4 py-2 text-black hover:text-red-500 font-bold"
             >
-              Contact Us
-            </Link>
-            <Link
-              to="/smartwatches"
-              className="block px-4 py-2 text-black hover:text-red-500 font-bold"
-            >
-              Delivery
-            </Link>
-            <Link
-              to="/others"
-              className="block px-4 py-2 text-black hover:text-red-500 font-bold"
-            >
-              About Us
+              About
             </Link>
           </div>
 
@@ -168,28 +154,16 @@ function Navbar({ data }) {
               Home
             </Link>
             <Link
-              to="/drones"
+              to="/products"
               className="text-black hover:text-red-500 font-bold"
             >
               Products
             </Link>
             <Link
-              to="/gimbles"
+              to="/guestPrivacy"
               className="text-black hover:text-red-500 font-bold"
             >
-              Contact Us
-            </Link>
-            <Link
-              to="/smartwatches"
-              className="text-black hover:text-red-500 font-bold"
-            >
-              Delivery
-            </Link>
-            <Link
-              to="/others"
-              className="text-black hover:text-red-500 font-bold"
-            >
-              About Us
+              About
             </Link>
           </div>
         </div>
@@ -207,7 +181,7 @@ function Navbar({ data }) {
             </button>
 
             <div className="text-sm ml-2 hidden md:block">
-              <p className="text-red-500">Welcome {data ? data : "Guest"}</p>
+              <p style={{ color: "#F4DFC8"}}>Welcome {data ? data : "Guest"}</p>
               <div>
                 {data ? (
                   <>
@@ -240,7 +214,7 @@ function Navbar({ data }) {
               />
 
               {count > 0 && (
-                <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-500 rounded-full">
+                <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-700 rounded-full">
                   {count}
                 </span>
               )}

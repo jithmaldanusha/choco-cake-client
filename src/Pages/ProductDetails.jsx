@@ -10,6 +10,7 @@ import { setProd } from "../Redux/ItemDetailAction";
 import { setQty } from "../Redux/QtyAction";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import "../css/homepage.css";
 
 // here onclick of buy now button uses dispatch(setProd(data));
 // to set data in redux state
@@ -71,7 +72,7 @@ function ProductDetails() {
   };
 
   return (
-    <div>
+    <div className="bg-black" style={{ color: "white" }}>
       <Navbar data={username} />
 
       <div className="container mx-auto p-4">
@@ -119,13 +120,13 @@ function ProductDetails() {
               <img
                 src={data.itemImage[0]}
                 style={{ width: "500px", height: "500px" }} // Custom size in pixels
-                className="object-cover rounded-lg"
+                className="object-cover rounded-lg border border-gray-200"
               />
             </div>
           </div>
 
           {/* Product Details */}
-          <div>
+          <div className="mt-4">
             {/* In stock tag */}
             <span
               className={`text-lg font-semibold px-4 py-2 rounded ${
@@ -134,7 +135,7 @@ function ProductDetails() {
                   : "bg-[#FF000026] text-[#FF0000]"
               }`}
             >
-              {data.quantity > 0 ? "In stock" : "Out Of Stock"}
+              {data.quantity > 0 ? "Available" : "Not Available"}
             </span>
 
             {/* Product title */}
@@ -154,8 +155,8 @@ function ProductDetails() {
 
             {/* short description */}
             <div className="mt-4">
-              <h3 className="text-lg font-medium">Short Description</h3>
-              <p className="text-gray-700 mt-2">{data.shortDescription}</p>
+              <h3 className="text-lg font-medium">Description</h3>
+              <p className="text-gray-500 mt-2">{data.shortDescription}</p>
             </div>
 
             {/* product additional images */}
@@ -177,27 +178,7 @@ function ProductDetails() {
               />
             </div>
 
-            <div className="mt-4">
-              <div
-                className="mt-4"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  paddingLeft: "490px",
-                }}
-              >
-                <p
-                  className="mt-2 text-gray-600"
-                  style={{ marginTop: "40px", marginRight: "10px" }}
-                >
-                  {data.warranty}  Warranty
-                </p>
-                <img
-                  src="/images/war.png"
-                  alt="Warranty"
-                  style={{ marginTop: "40px" }}
-                />
-              </div>
+            <div className="mt-10">
               <div
                 className="flex flex-col items-start "
                 style={{ marginLeft: "30 0px", marginTop: "-30px" }}
@@ -209,12 +190,12 @@ function ProductDetails() {
                   <p>{data.quantity}</p>
                 </div>
 
-                <label htmlFor="quantity" className="text-lg font-medium ">
+                <label htmlFor="quantity" className="text-lg font-medium">
                   Quantity
                 </label>
                 <div className="flex items-center border border-gray-200 rounded">
                   <button
-                    className="p-2 text-gray-600 hover:bg-gray-200"
+                    className="p-2 text-gray-600 hover:bg-gray-900"
                     onClick={handleDecrement}
                   >
                     -
@@ -223,7 +204,7 @@ function ProductDetails() {
                     id="quantity"
                     type="text"
                     value={quantity}
-                    className="w-12 text-center border-none outline-none"
+                    className="w-12 text-center border-none outline-none bg-black"
                   />
                   <button
                     className="p-2 text-gray-600 hover:bg-gray-200"
@@ -239,12 +220,14 @@ function ProductDetails() {
 
             {/* items details buy now button */}
             <button
-              className="mt-14 w-full text-white py-2 rounded-md hover:bg-red-600"
+              className="mt-14 w-full text-white py-2 rounded-md"
               style={{
-                backgroundColor: "#F66A74",
+                backgroundColor: "#FF7E00",
                 width: "400px",
                 marginTop: "40px",
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e56f00")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FF7E00")}
               onClick={() => {
                 if (data.quantity > 0) {
                   dispatch(setProd(data));
@@ -266,22 +249,22 @@ function ProductDetails() {
           className="text-xl font-bold mb-2 ml-48"
           style={{ marginTop: "90px", marginLeft: "170px" }}
         >
-          Technical Specifications
+          Product Specifications
         </h3>
 
-        {/* Technical Specifications */}
-        <div className="mt-8 p-4 bg-gray-100 rounded-lg w-3/4 ml-32 translate-x-10">
+        {/* Specifications */}
+        <div className="mt-8 p-4 rounded-lg w-3/4 ml-32 translate-x-10" style={{background: "#F4DFC8", color: "#FF7E00"}}>
           {/* title */}
           <h3 className="text-xl font-bold mb-4">{data.topic1}</h3>
 
           {/* paragraph */}
-          <p className="text-gray-700 mb-4">{data.description1}</p>
+          <p className="text-black mb-4">{data.description1}</p>
 
           {/* Second Title  */}
           <h4 className="text-lg font-medium mb-2">{data.topic2}</h4>
 
           {/* list */}
-          <ul className="list-disc list-inside text-gray-700 mb-4">
+          <ul className="list-disc list-inside text-black mb-4">
             {data.description2}
           </ul>
 
@@ -291,7 +274,7 @@ function ProductDetails() {
 
           <div className="flex items-center ml- mt-10">
             <div className="w-full h-96 object-cover rounded-lg border border-gray-200 mr-4">
-              <Carousel slideInterval={3000}>
+              <Carousel slideInterval={3000} className="carousel">
                 <img src={data.itemDescription[0]} alt="..." />
                 <img src={data.itemDescription[1]} alt="..." />
                 <img src={data.itemDescription[2]} alt="..." />
@@ -305,10 +288,9 @@ function ProductDetails() {
           /> */}
           </div>
         </div>
-        {/* Technical Specification ends here */}
 
         {/* Related Products Section */}
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 text-black">
           <div className="mt-8">
             <h3 className="text-2xl font-bold mb-4">Related Products</h3>
             <div className="w-full gap-6">

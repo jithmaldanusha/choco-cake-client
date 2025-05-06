@@ -1,6 +1,6 @@
 import React from "react";
 
-const ImageUpload = ({ label, id, name, onChange, multiple, error }) => {
+const ImageUpload = ({ label, id, name, onChange, error }) => {
   return (
     <div className="mb-5 mt-5">
       <div className="flex items-center justify-center w-full">
@@ -39,7 +39,6 @@ const ImageUpload = ({ label, id, name, onChange, multiple, error }) => {
             type="file"
             className="hidden"
             accept="image/*"
-            multiple={multiple}
             onChange={onChange}
           />
         </label>

@@ -37,7 +37,7 @@ function ViewProductsAdmin() {
 
   const openEditModal = (product) => {
     setProductToEdit(product);
-    
+
     setEditFormData({
       itemName: product.itemName,
       itemType: product.itemType,
@@ -46,7 +46,7 @@ function ViewProductsAdmin() {
       shortDescription: product.shortDescription,
       quantity: product.quantity,
       warranty: product.warranty,
-      
+
       // availability: product.availability,
       originalPrice: product.originalPrice,
       priceAfterDiscount: product.priceAfterDiscount,
@@ -82,20 +82,20 @@ function ViewProductsAdmin() {
 
     // const formData = new FormData();
 
-  // Append text fields
-  // for (const key in editFormData) {
-  //   if (editFormData.hasOwnProperty(key)) {
-  //     formData.append(key, editFormData[key]);
-  //   }
-  // }
+    // Append text fields
+    // for (const key in editFormData) {
+    //   if (editFormData.hasOwnProperty(key)) {
+    //     formData.append(key, editFormData[key]);
+    //   }
+    // }
 
-//   for (const image of editFormData.itemsWithAccessoriesImages1) {
+    //   for (const image of editFormData.itemsWithAccessoriesImages1) {
     // formData.append('itemsWithAccessoriesImages1')
-//  }
+    //  }
 
-//   for (const [key, value] of formData.entries()) {
-//     console.log(`${key}: ${value}`);
-// }
+    //   for (const [key, value] of formData.entries()) {
+    //     console.log(`${key}: ${value}`);
+    // }
     console.log(editFormData);
 
     try {
@@ -140,7 +140,7 @@ function ViewProductsAdmin() {
   };
 
   // Handle deleteconst
-  
+
   useEffect(() => {
 
   })
@@ -165,8 +165,8 @@ function ViewProductsAdmin() {
     } finally {
       closeDeleteModal();
 
-       // Refresh the page
-    window.location.reload();
+      // Refresh the page
+      window.location.reload();
 
     }
   };
@@ -218,12 +218,12 @@ function ViewProductsAdmin() {
 
   return (
     <div className="flex max-8xl bg-red-300">
-      <aside style={{ width: "15rem" }} className="h-screen ">
+      <aside style={{ width: "15rem" }} className="h-screen bg-[#6C070E]">
         <div className="p-6">
           {/* company image */}
           <div className="flex flex-col items-center space-y-2">
             <img
-              src="/images/spklogo.png"
+              src="/images/companyLogo.png"
               alt="SPK Store"
               style={{ width: "8rem", height: "8rem" }}
             />
@@ -232,36 +232,47 @@ function ViewProductsAdmin() {
           <nav className="mt-10 space-y-2">
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/dashboard")}
+              onClick={() => (window.location.href = "/admin")}
             >
               <img
-                 src="/images/dashboardiconblack.png"
+                src="/images/dashboardiconblack.png"
                 alt="Dashboard"
                 className="h-6 w-6"
               />
-              <span className="font-semibold">Dashboard</span>
+              <span className="font-semibold text-[#FF7E00]">Dashboard</span>
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
+              onClick={() => (window.location.href = "/addproduct")}
             >
               <img
                 src="/images/Addimage.png"
                 alt="Addimage"
                 className="h-6 w-6"
               />
-              <span className="font-semibold">Add Product</span>
+              <span className="font-semibold text-[#FF7E00]">Add Product</span>
             </button>
             <button
               className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/myorder")}
+              onClick={() => (window.location.href = "/myproducts")}
+            >
+              <img
+                src="/images/Addimage.png"
+                alt="My Products"
+                className="h-6 w-6"
+              />
+              <span className="font-semibold text-[#FF7E00]">MY Products</span>
+            </button>
+            <button
+              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
+              onClick={() => (window.location.href = "/adminOrder")}
             >
               <img
                 src="/images/shoppingBag.png"
                 alt="ShoppingBag"
                 className="h-6 w-6"
               />
-              <span className="font-semibold">My Order</span>
+              <span className="font-semibold text-[#FF7E00]">My Order</span>
             </button>
           </nav>
         </div>
@@ -367,21 +378,21 @@ function ViewProductsAdmin() {
                         <p className="mt-1 truncate text-xs leading-5 max-w-4xl text-gray-500">
                           Description: ${product.shortDescription}
                         </p>
-                        
-                          <button
+
+                        <button
                           className="text-red-400 cursor-pointer hover:underline"
-                            onClick={() => navigate("/prodDetails", { state: product })}
-                          >
-                            more info...
-                          </button>
-                        
+                          onClick={() => navigate("/prodDetails", { state: product })}
+                        >
+                          more info...
+                        </button>
+
                       </div>
                     </div>
                     <div className="hidden sm:flex sm:flex-col sm:items-end mr-3">
                       <p className="text-sm leading-6 text-gray-900">
                         {/* Additional product details can go here */}
                         <p className="mt-1 truncate text-lg leading-5 text-gray-500">
-                           price: Rs.{product.priceAfterDiscount}
+                          price: Rs.{product.priceAfterDiscount}
                         </p>
                         <p className="mt-2 truncate text-md leading-5 text-gray-500">
                           Before Discount: Rs.{product.originalPrice}
@@ -571,16 +582,16 @@ function ViewProductsAdmin() {
               </div>
 
               <div className="flex flex-col m-5 pl-5 align-middle items-start ">
-                
 
 
 
 
-                
+
+
 
                 {/* <div className="flex gap-3">
                    */}
-                  {/* <div className="flex items-center justify-center w-full">
+                {/* <div className="flex items-center justify-center w-full">
                     <label
                       for="dropzone-file4"
                       className="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -625,7 +636,7 @@ function ViewProductsAdmin() {
                   </div> */}
 
 
-                  {/* <div className="flex items-center justify-center w-full">
+                {/* <div className="flex items-center justify-center w-full">
                     <label
                       for="dropzone-file4"
                       className="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -677,12 +688,12 @@ function ViewProductsAdmin() {
 
 
 
-                  {/* <div className="flex items-center justify-center w-full">
+                {/* <div className="flex items-center justify-center w-full">
                     <label
                       for="dropzone-file4"
                       className="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                     > */}
-                      {/* <p className="">item images</p>
+                {/* <p className="">item images</p>
                       <div className="flex flex-col items-center justify-center pt-5 pb-6">
                         <svg
                           className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -726,12 +737,12 @@ function ViewProductsAdmin() {
                     </label>
                   </div> */}
 
-{/* 
+                {/* 
                 </div> */}
 
 
                 {/* <div className="flex gap-3 mt-5"> */}
-                  {/* <div className="flex items-center justify-center w-full">
+                {/* <div className="flex items-center justify-center w-full">
                     <label
                       for="dropzone-file4"
                       className="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -781,7 +792,7 @@ function ViewProductsAdmin() {
                   </div> */}
 
 
-                  {/* <div className="flex items-center justify-center w-full">
+                {/* <div className="flex items-center justify-center w-full">
                     <label
                       for="dropzone-file4"
                       className="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"

@@ -28,8 +28,8 @@ function CartSideBar() {
         .then((response) => {
           setLatestRecord(response.data.data.items);
           // console.log(response.data.data.items);
-            console.log(response.data.data.items.length);
-            
+          console.log(response.data.data.items.length);
+
           // dispatch(setCart(response.data.data.items.length));
           // setError(null);
         })
@@ -44,36 +44,24 @@ function CartSideBar() {
   console.log(latestRecord);
   let total;
   if (latestRecord) {
-    
-     total = latestRecord.reduce((accumulator, item) => {
-      return accumulator + parseInt(item.priceAfterDiscount) ;
+
+    total = latestRecord.reduce((accumulator, item) => {
+      return accumulator + parseInt(item.priceAfterDiscount);
     }, 0);
   }
 
   return (
     // the whole cart div starts here
-    <div className=" bg-white shadow-lg p-6 h-screen border rounded-lg absolute top-16 right-16 w-3xl z-50">
+    <div className="shadow-lg p-6 h-screen border rounded-lg absolute top-16 right-16 w-3xl z-50" style={{ background: "#FF7E00" }}>
       {/* Subtotal div starts here */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex items-center mb-6">
         {/* Subtotal topic */}
-        <h2 className="text-2xl font-semibold pl-[30px]">Subtotal</h2>
+        <div className="text-xl font-semibold pl-[10px] me-3">Subtotal : </div>
 
-        {/* Circle button */}
-        {/* <div className="relative">
-          <button
-            className="flex items-center justify-center w-8 h-8 rounded-full"
-            style={{ backgroundColor: "#75757533" }}
-          >
-            <span className="text-black-400 text-2xl hover:text-gray-600 focus:outline-none -mt-1">
-              &times;
-            </span>
-          </button>
-        </div> */}
+        {/* Total display  */}
+        <div className="text-xl font-bold text-red-900">LKR {total}</div>
       </div>
-      {/* Subtotal div ends here */}
 
-      {/* Total display  */}
-      <div className="text-xl font-bold mb-5 pl-[34px] -mt-2">LKR {total}</div>
 
       {/* Checkout button */}
       {/* <button className="w-full bg-red-500 text-white py-2 rounded-md mb-4" onClick={() => {
@@ -84,10 +72,10 @@ function CartSideBar() {
 
       {/* Go to cart button */}
       <button
-        className="w-full border border-red-500 text-black font-semibold py-2 rounded-md mb-4"
-        style={{ fontSize: "17px" }}
+        className="w-full border border-black  text-black font-semibold py-2 rounded-md mb-4"
+        style={{ fontSize: "17px", background: "#F4DFC8" }}
         onClick={() => {
-          navigate("/cart", {state: latestRecord});
+          navigate("/cart", { state: latestRecord });
         }}
       >
         Go To Cart
@@ -125,15 +113,15 @@ function CartSideBar() {
                 <div className="flex items-center align-middle ">
                   {/* product price */}
                   <p
-  className="font-semibold m-3 w-20 overflow-hidden ml-2 text-right"
-  style={{ color: "#757575" }}
->
-  {items.priceAfterDiscount}
-</p>
+                    className="font-semibold m-3 w-20 overflow-hidden ml-2 text-right"
+                    style={{ color: "#757575" }}
+                  >
+                    {items.priceAfterDiscount}
+                  </p>
 
 
-                  
-                  
+
+
                 </div>
                 {/* product price , quantity and deltete div ends here*/}
               </div>
