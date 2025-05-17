@@ -55,7 +55,7 @@ const UserDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`https://backend.spkstore.lk/member/getmember/${email}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/member/getmember/${email}`)
       .then((Response) => {
         console.log(Response.data.data);
         setUser(Response.data.data);
@@ -89,7 +89,7 @@ const UserDashboard = () => {
       // let formData = new FormData();
     
       axios
-        .patch(`https://backend.spkstore.lk/member/updateMember/${email}`, values)
+        .patch(`${process.env.REACT_APP_SERVER_URL}/member/updateMember/${email}`, values)
         .then((response) => {
           console.log(response.data);
         });
@@ -118,7 +118,7 @@ const UserDashboard = () => {
 
    if (field2 === field3) {
     try {
-      const response = await axios.patch(`https://backend.spkstore.lk/member/updatePassword/${email}`, {
+      const response = await axios.patch(`${process.env.REACT_APP_SERVER_URL}/member/updatePassword/${email}`, {
         field1,
         field2,
         field3

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import AdminNavbar from "../Components/AdminNavbar";
 
 function AdminApproveOrder() {
   // get values from state of navigation of pages
@@ -96,13 +97,6 @@ function AdminApproveOrder() {
   };
   
   
-  
-  
-
-
-
-
-
 
   const [myqty, setMyQty] = useState([]);
   const [originalQty, setOriginalQty] = useState("");
@@ -111,7 +105,7 @@ function AdminApproveOrder() {
   const handleApproved = (value, id) => {
     if (value === "accept") {
       axios
-        .patch(`https://backend.spkstore.lk/order/updateOrder/${id}`, {
+        .patch(`${process.env.REACT_APP_SERVER_URL}/order/updateOrder/${id}`, {
           status: "confirmed",
         })
         .then((Response) => {
@@ -119,7 +113,7 @@ function AdminApproveOrder() {
         });
     } else if (value === "refused") {
       axios
-        .patch(`https://backend.spkstore.lk/order/updateOrder/${id}`, {
+        .patch(`${process.env.REACT_APP_SERVER_URL}/order/updateOrder/${id}`, {
           status: "refused",
         })
         .then((Response) => {
@@ -130,7 +124,7 @@ function AdminApproveOrder() {
       // =========================================================
 
       axios
-        .get(`https://backend.spkstore.lk/order/getOrderQty/${id}`)
+        .get(`${process.env.REACT_APP_SERVER_URL}/getOrderQty/${id}`)
         .then((Response) => {
           console.log(Response.data);
           console.log(Response.data.data.products);
@@ -143,7 +137,7 @@ function AdminApproveOrder() {
             let myid = product.itemID
             axios
               .get(
-                `https://backend.spkstore.lk/product/getSingleProduct/${myid}`
+                `${process.env.REACT_APP_SERVER_URL}/product/getSingleProduct/${myid}`
               )
               .then((secondResponse) => {
                 // Handle the response from the second request
@@ -162,11 +156,11 @@ function AdminApproveOrder() {
                 
                 // Return the axios.patch promise
                 return axios.patch(
-                  `https://backend.spkstore.lk/product/updateSingleProduct/${myid}`, updatedProductData)
+                  `${process.env.REACT_APP_SERVER_URL}/product/updateSingleProduct/${myid}`, updatedProductData)
                   .then(patchResponse => {
                     // After updating the product, update the order
                     // const orderId = product.orderId; // Assuming there's an orderId in the product
-                    return axios.patch(`https://backend.spkstore.lk/order/updateOrder/${id}`, {
+                    return axios.patch(`${process.env.REACT_APP_SERVER_URL}/order/updateOrder/${id}`, {
                       status: "delivered",
                       // updatedProductData // Send any relevant data needed for the order update
                     });
@@ -266,7 +260,7 @@ function AdminApproveOrder() {
 
     try {
       const response = await axios.post(
-        `https://backend.spkstore.lk/send-email`, vals
+        `${process.env.REACT_APP_SERVER_URL}/send-email`, vals
       );
       console.log(response.data); // Add this line
       alert(response.data.message); // Alert the response message
@@ -289,7 +283,7 @@ function AdminApproveOrder() {
    
    
     try {
-      const response = await axios.post("https://backend.spkstore.lk/refuse-email",vals);
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/refuse-email`,vals);
       alert(response.data.message);
       setIsRefused(true);
     } catch (error) {
@@ -308,58 +302,7 @@ function AdminApproveOrder() {
   return (
     <div className="flex bg-red-300" >
       {/* Sidebar */}
-      <aside style={{ width: "15rem" }} className="h-screen bg-red-300">
-        {/* Calling the Navbar component */}
-        <aside style={{ width: "15rem" }} className="h-screen">
-          <div className="p-6">
-            {/* company image */}
-            <div className="flex flex-col items-center space-y-2">
-              <img
-                src="/images/spklogo.png"
-                alt="SPK Store"
-                style={{ width: "8rem", height: "8rem" }}
-              />
-            </div>
-
-            <nav className="mt-10 space-y-2">
-              <button
-                className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-                onClick={() => (window.location.href = "/dashboard")}
-              >
-                <img
-                 src="/images/dashboardiconblack.png"
-                  alt="Dashboard"
-                  className="h-6 w-6"
-                />
-                <span className="font-semibold">Dashboard</span>
-              </button>
-              <button
-                className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-                onClick={() => (window.location.href = "/admin")}
-              >
-                <img
-                  src="/images/Addimage.png"
-                  alt="Addimage"
-                  className="h-6 w-6"
-                />
-                <span className="font-semibold">Add Product</span>
-              </button>
-              <button
-                className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-                onClick={() => (window.location.href = "/adminOrder")}
-              >
-                <img
-                  src="/images/shoppingBag.png"
-                  alt="ShoppingBag"
-                  className="h-6 w-6"
-                />
-                <span className="font-semibold">My Order</span>
-              </button>
-            </nav>
-          </div>
-        </aside>
-        {/* <AdminNavbar /> */}
-      </aside>
+      <AdminNavbar/>
 
       {/* Main Content */}
       <main className="flex-grow p-6 bg-white">

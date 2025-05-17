@@ -64,7 +64,7 @@ function ProductsPage() {
   useEffect(() => {
     if (selectedOptions.length > 0) {
       axios
-        .post("https://backend.spkstore.lk/product/getProductsFilter", {
+        .post(`${process.env.REACT_APP_SERVER_URL}/product/getProductsFilter`, {
           checkboxes: selectedOptions,
         })
         .then((response) => {
@@ -77,7 +77,7 @@ function ProductsPage() {
         });
     } else {
       axios
-        .get("https://backend.spkstore.lk/product/getProducts")
+        .get(`${process.env.REACT_APP_SERVER_URL}/product/getProducts`)
         .then((response) => {
           // Filter the products where itemType is "Drone"
             // const filteredData = response.data.data.filter(

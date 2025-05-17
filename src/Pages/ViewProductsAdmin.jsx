@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import Modal from "react-modal";
+import AdminNavbar from "../Components/AdminNavbar";
 
 function ViewProductsAdmin() {
   const navigate = useNavigate();
@@ -101,7 +102,7 @@ function ViewProductsAdmin() {
     try {
       axios
         .patch(
-          `https://backend.spkstore.lk/product/updateProduct/${productToEdit._id}`,
+          `${process.env.REACT_APP_SERVER_URL}/product/updateProduct/${productToEdit._id}`,
           editFormData,
           // {
           //   headers: {
@@ -155,7 +156,7 @@ function ViewProductsAdmin() {
 
       // Perform the delete request
       await axios.delete(
-        `https://backend.spkstore.lk/product/deleteProduct/${productToDelete._id}`
+        `${process.env.REACT_APP_SERVER_URL}/product/deleteProduct/${productToDelete._id}`
       );
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -177,7 +178,7 @@ function ViewProductsAdmin() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "https://backend.spkstore.lk/product/getProducts"
+          `${process.env.REACT_APP_SERVER_URL}/product/getProducts`
         );
         setProducts(response.data.data);
         setFilteredProducts(response.data.data); // Set initial filtered products to all products
@@ -218,66 +219,8 @@ function ViewProductsAdmin() {
 
   return (
     <div className="flex max-8xl bg-red-300">
-      <aside style={{ width: "15rem" }} className="h-screen bg-[#6C070E]">
-        <div className="p-6">
-          {/* company image */}
-          <div className="flex flex-col items-center space-y-2">
-            <img
-              src="/images/companyLogo.png"
-              alt="SPK Store"
-              style={{ width: "8rem", height: "8rem" }}
-            />
-          </div>
-
-          <nav className="mt-10 space-y-2">
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
-            >
-              <img
-                src="/images/dashboardiconblack.png"
-                alt="Dashboard"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">Dashboard</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/addproduct")}
-            >
-              <img
-                src="/images/Addimage.png"
-                alt="Addimage"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">Add Product</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/myproducts")}
-            >
-              <img
-                src="/images/Addimage.png"
-                alt="My Products"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">MY Products</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/adminOrder")}
-            >
-              <img
-                src="/images/shoppingBag.png"
-                alt="ShoppingBag"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">My Order</span>
-            </button>
-          </nav>
-        </div>
-      </aside>
-
+      <AdminNavbar/>
+      
       <main className="2xl:flex flex-col w-full p-7  bg-gray-100">
         <header className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">My Products</h1>
@@ -485,23 +428,14 @@ function ViewProductsAdmin() {
                       placeholder="Iten TYpe"
                     >
                       <option>Select item type</option>
-                      <option>Drone</option>
-                      <option>Gimbal</option>
-                      <option>SmartWatch</option>
+                      <option>Cake</option>
+                      <option>Cupcake</option>
+                      <option>Dessert</option>
                       <option>Other</option>
                     </select>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="mb-4">
-                    <label className="block mb-1">Description:</label>
-                    <textarea
-                      name="itemDescription"
-                      value={editFormData.itemDescription}
-                      onChange={handleEditFormChange}
-                      className="w-full p-2 border rounded"
-                    />
-                  </div>
                   <div className="mb-4">
                     <label className="block mb-1">Brand:</label>
                     <input
@@ -513,17 +447,19 @@ function ViewProductsAdmin() {
                     />
                   </div>
                 </div>
-                <div className="flex gap-3">
+                <div className="">
                   <div className="mb-4">
                     <label className="block mb-1">Short Description:</label>
                     <input
-                      type="text"
+                      type="textarea"
                       name="shortDescription"
                       value={editFormData.shortDescription}
                       onChange={handleEditFormChange}
                       className="w-full p-2 border rounded"
                     />
                   </div>
+                </div>
+                <div className="flex gap-3">
                   <div className="mb-4">
                     <label className="block mb-1">Quantity:</label>
                     <input
@@ -536,16 +472,6 @@ function ViewProductsAdmin() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="mb-4">
-                    <label className="block mb-1">warranty:</label>
-                    <input
-                      type="text"
-                      name="warranty"
-                      value={editFormData.warranty}
-                      onChange={handleEditFormChange}
-                      className="w-full p-2 border rounded"
-                    />
-                  </div>
                   {/* <div className="mb-4">
                     <label className="block mb-1">availability:</label>
                     <input

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AdminNavbar from "../Components/AdminNavbar";
 
 const AdminDashboard = () => {
   //order total
@@ -11,7 +12,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchTotalIncome = async () => {
       try {
-        const response = await fetch("https://backend.spkstore.lk/order/getTotalIncome");
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/order/getTotalIncome`);
         const result = await response.json();
         if (result.statusCode === 200) {
           setTotalIncome(result.data.totalIncome);
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
 
     const fetchMonthlyIncome = async () => {
       try {
-        const response = await fetch("https://backend.spkstore.lk/order/getMonthlyIncome");
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/order/getMonthlyIncome`);
         const result = await response.json();
         console.log(result);
 
@@ -45,67 +46,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar starts here */}
-      <aside style={{ width: "15rem" }} className="h-screen bg-[#6C070E]">
-        <div className="p-6">
-          {/* Company image */}
-          <div className="flex flex-col items-center space-y-2">
-            <img
-              src="/images/CompanyLogo.png"
-              alt="SPK Store"
-              style={{ width: "8rem", height: "8rem" }}
-            />
-          </div>
-
-          <nav className="mt-10 space-y-2">
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
-            >
-              <img
-                src="/images/dashboardiconblack.png"
-                alt="Dashboard"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">Dashboard</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/addproduct")}
-            >
-              <img
-                src="/images/Addimage.png"
-                alt="Add Product"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">Add Product</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/myproducts")}
-            >
-              <img
-                src="/images/Addimage.png"
-                alt="My Products"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">My Products</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/adminOrder")}
-            >
-              <img
-                src="/images/shoppingBag.png"
-                alt="My Order"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">My Order</span>
-            </button>
-          </nav>
-        </div>
-      </aside>
-      {/* Sidebar ends here */}
+      <AdminNavbar/>
 
       {/* Main content */}
       <div className="flex-1 p-6 bg-gray-50">

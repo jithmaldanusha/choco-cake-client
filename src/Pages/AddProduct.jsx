@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import AdminNavbar from "../Components/AdminNavbar";
 
 function AddProduct() {
   const [isDroneSelected, setIsDroneSelected] = useState(false);
@@ -132,7 +133,7 @@ function AddProduct() {
       }
 
       axios
-        .post("https://backend.spkstore.lk/product/addProduct", formData)
+        .post(`${process.env.REACT_APP_SERVER_URL}/product/addProduct`, formData)
         .then((response) => {
           console.log(response.data);
           setShowAlert(true);
@@ -147,67 +148,8 @@ function AddProduct() {
   });
 
   return (
-    <div className="flex bg-red-300 ">
-      <aside style={{ width: "15rem" }} className="h-screen bg-[#6C070E]">
-        <div className="p-6">
-          {/* company image */}
-          <div className="flex flex-col items-center space-y-2">
-            <img
-              src="/images/CompanyLogo.png"
-              alt="choco"
-              style={{ width: "8rem", height: "8rem" }}
-            />
-          </div>
-
-          <nav className="mt-10 space-y-2">
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/admin")}
-            >
-              <img
-                src="/images/dashboardiconblack.png"
-                alt="Dashboard"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">Dashboard</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/addproduct")}
-            >
-              <img
-                src="/images/Addimage.png"
-                alt="Addimage"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">Add Product</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/myproducts")}
-            >
-              <img
-                src="/images/Addimage.png"
-                alt="My Products"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">MY Products</span>
-            </button>
-            <button
-              className="flex items-center space-x-3 text-gray-700 p-3 rounded-md hover:bg-white focus:outline-none w-48"
-              onClick={() => (window.location.href = "/adminOrder")}
-            >
-              <img
-                src="/images/shoppingBag.png"
-                alt="ShoppingBag"
-                className="h-6 w-6"
-              />
-              <span className="font-semibold text-[#FF7E00]">My Order</span>
-            </button>
-          </nav>
-        </div>
-      </aside>
-
+    <div className="flex">
+      <AdminNavbar />
       <main className="2xl:flex flex-col w-full p-6 bg-gray-50">
         <header className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Add New Product</h1>
@@ -322,25 +264,7 @@ function AddProduct() {
                 </div>
 
                 <div className="flex gap-6">
-                  {/* <div className="w-full">
-                    <select
-                      name="availability"
-                      value={formik.values.availability}
-                      onChange={formik.handleChange("availability")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="Availability"
-                    >
-                      <option>Select availability</option>
-                      <option>In stock</option>
-                      <option>Out of stock</option>
-                    </select>
-                    {formik.touched.availability &&
-                    formik.errors.availability ? (
-                      <div className="text-red-500">
-                        {formik.errors.availability}
-                      </div>
-                    ) : null}
-                  </div> */}
+
                   <div className="w-full mb-5">
                     <select
                       name="offers"
@@ -415,196 +339,8 @@ function AddProduct() {
                     ) : null}
                   </div>
 
-                  {/* <div className="w-full ">
-                    <input
-                      // id="itemName"
-                      name="warranty"
-                      type="text"
-                      className="w-full p-2 border border-gray-300 rounded placeholder-black"
-                      value={formik.values.warranty}
-                      onChange={formik.handleChange("warranty")}
-                      // onBlur={formik.handleBlur}
-                      placeholder="warranty"
-                    />
-                    {formik.touched.warranty && formik.errors.warranty ? (
-                      <div className="text-red-500">
-                        {formik.errors.warranty}
-                      </div>
-                    ) : null}
-                  </div> */}
                 </div>
 
-                {/* <div className="flex gap-6 mb-5">
-                  <div className="w-full">
-                    <select
-                      name="camera"
-                      value={formik.values.camera}
-                      onChange={formik.handleChange("camera")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="camera"
-                      disabled={
-                        isGimbalSelected ||
-                        IsSmartWatchSelected ||
-                        IsOtherSelected
-                      }
-                    >
-                      <option>Select camera option</option>
-                      <option>2.7K30FPS</option>
-                      <option>4K30FPS</option>
-                      <option>4K60FPS</option>
-                      <option>8K</option>
-                    </select>
-                    {formik.touched.camera && formik.errors.camera ? (
-                      <div className="text-red-500">{formik.errors.camera}</div>
-                    ) : null}
-                  </div>
-                  <div className="w-full">
-                    <select
-                      name="range"
-                      value={formik.values.range}
-                      onChange={formik.handleChange("range")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="range"
-                      disabled={
-                        isGimbalSelected ||
-                        IsSmartWatchSelected ||
-                        IsOtherSelected
-                      }
-                    >
-                      <option>Select range option</option>
-                      <option>3 KM</option>
-                      <option>6 KM</option>
-                      <option>9 KM</option>
-                      <option>10 KM</option>
-                      <option>20 KM</option>
-                    </select>
-                    {formik.touched.range && formik.errors.range ? (
-                      <div className="text-red-500">{formik.errors.range}</div>
-                    ) : null}
-                  </div>
-                </div> */}
-
-                <div className="flex mb-5">
-                  {/* <div>
-                    <select
-                      name="flyTime"
-                      value={formik.values.flyTime}
-                      onChange={formik.handleChange("flyTime")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="flyTime"
-                    >
-                      <option>Select fly time option</option>
-                      <option>32 min</option>
-                      <option>64 min</option>
-                      <option>96 min</option>
-                    </select>
-                    {formik.touched.flyTime && formik.errors.flyTime ? (
-                      <div className="text-red-500">
-                        {formik.errors.flyTime}
-                      </div>
-                    ) : null}
-                  </div> */}
-                  {/* preorder */}
-                  {/* <div>
-                    <select
-                      name="range"
-                      value={formik.values.range}
-                      onChange={formik.handleChange("range")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="range"
-                    >
-                      <option>Offers</option>
-                      <option>Yes</option>
-                      <option>No</option>
-                    
-                    </select>
-                    {formik.touched.range && formik.errors.range ? (
-                        <div className="text-red-500">
-                          {formik.errors.range}
-                        </div>
-                      ) : null}
-                  </div> */}
-                </div>
-
-                {/* <div className="flex gap-6 mb-5">
-                  <div className="w-full">
-                    <select
-                      name="axis"
-                      value={formik.values.axis}
-                      onChange={formik.handleChange("axis")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="axis"
-                      disabled={
-                        isDroneSelected ||
-                        IsSmartWatchSelected ||
-                        IsOtherSelected
-                      }
-                    // disabled={IsSmartWatchSelected}
-                    >
-                      <option>Select axis option</option>
-                      <option>3 axis</option>
-                      <option>2 axis</option>
-                      <option>1 axis</option>
-                    </select>
-                    {formik.touched.axis && formik.errors.axis ? (
-                      <div className="text-red-500">{formik.errors.axis}</div>
-                    ) : null}
-                  </div>
-                  <div className="w-full">
-                    <select
-                      name="devices"
-                      value={formik.values.devices}
-                      onChange={formik.handleChange("devices")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="range"
-                      disabled={
-                        isDroneSelected ||
-                        IsSmartWatchSelected ||
-                        IsOtherSelected
-                      }
-                    >
-                      <option>Select device option</option>
-                      <option>Mirrorless Camera</option>
-                      <option>DSLR Camera</option>
-                      <option>Mobile phone</option>
-                      <option>Action Camera</option>
-                      <option>Digitech Camera</option>
-                    </select>
-                    {formik.touched.devices && formik.errors.devices ? (
-                      <div className="text-red-500">
-                        {formik.errors.devices}
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <select
-                      name="features"
-                      value={formik.values.features}
-                      onChange={formik.handleChange("features")}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="range"
-                      disabled={
-                        isDroneSelected ||
-                        IsSmartWatchSelected ||
-                        IsOtherSelected
-                      }
-                    >
-                      <option>Select feature option</option>
-                      <option>AI Tracking</option>
-                      <option>Display</option>
-                      <option>Fill Light</option>
-                      <option>Auto Tracking</option>
-                      <option>Built-in extension pole</option>
-                    </select>
-                    {formik.touched.features && formik.errors.features ? (
-                      <div className="text-red-500">
-                        {formik.errors.features}
-                      </div>
-                    ) : null}
-                  </div>
-                </div> */}
                 <div>
                   <div className="mb-5 mt-5">
                     <div className="flex items-center justify-center w-full">
@@ -613,7 +349,7 @@ function AddProduct() {
                         className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                       >
                         <p className="">
-                          {images.length > 0 ? images.length : "item images"}
+                          {images.length > 0 ? images.length : "item image/s"}
                         </p>
                         <div className="flex flex-col items-center justify-center pt-5 pb-6">
                           <svg
@@ -631,12 +367,13 @@ function AddProduct() {
                               d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                             />
                           </svg>
-                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                          <p className="mb-1 text-sm text-grey-500 dark:text-gray-400">
                             <span className="font-semibold">
                               Click to upload
                             </span>{" "}
                             or drag and drop
                           </p>
+                          <p className="mb-1 text-red-500">Selet Maximum 5 Images for Carousel</p>
                           <p className="text-xs text-gray-500 dark:text-gray-400">
                             SVG, PNG, JPG or GIF (MAX. 800x400px)
                           </p>
@@ -645,6 +382,7 @@ function AddProduct() {
                           id="dropzone-file4"
                           name="itemImage"
                           type="file"
+                          required
                           className="hidden"
                           accept="itemImage/*"
                           // value={formik.values.itemsWithAccessoriesImages1}
@@ -672,7 +410,7 @@ function AddProduct() {
                           for="dropzone-file1"
                           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                         >
-                          <p className="">Item images left</p>
+                          <p className="">Item image small(1)</p>
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg
                               className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -703,6 +441,7 @@ function AddProduct() {
                             id="dropzone-file1"
                             name="itemsWithAccessoriesImages1"
                             type="file"
+                            required
                             className="hidden"
                             accept="itemsWithAccessoriesImages1/*"
                             // value={formik.values.itemsWithAccessoriesImages1}
@@ -729,7 +468,7 @@ function AddProduct() {
                           for="dropzone-file2"
                           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                         >
-                          <p className="">Item images middle</p>
+                          <p className="">Item image small(2)</p>
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg
                               className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -760,6 +499,7 @@ function AddProduct() {
                             id="dropzone-file2"
                             name="itemsWithAccessoriesImages2"
                             type="file"
+                            required
                             className="hidden"
                             accept="itemsWithAccessoriesImages2/*"
                             // value={formik.values.itemsWithAccessoriesImages1}
@@ -786,7 +526,7 @@ function AddProduct() {
                           for="dropzone-file3"
                           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                         >
-                          <p className="">Item images right</p>
+                          <p className="">Item image small(3)</p>
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg
                               className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -817,6 +557,7 @@ function AddProduct() {
                             id="dropzone-file3"
                             name="itemsWithAccessoriesImages3"
                             type="file"
+                            required
                             className="hidden"
                             accept="itemsWithAccessoriesImages3/*"
                             // value={formik.values.itemsWithAccessoriesImages1}
@@ -970,7 +711,7 @@ function AddProduct() {
                       for="dropzone-file"
                       className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                     >
-                      <p className="">Item Description images</p>
+                      <p className="">Item Description/Display/Thumbnail image/s</p>
                       <div className="flex flex-col items-center justify-center pt-5 pb-6">
                         <svg
                           className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -999,6 +740,7 @@ function AddProduct() {
                         id="dropzone-file"
                         name="itemDescription"
                         type="file"
+                        required
                         className="hidden"
                         accept="itemDescription/*"
                         // value={formik.values.itemDescription}

@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import {Routes, Route, useNavigate, BrowserRouter} from 'react-router-dom';
 import SignIn from './Components/SignIn';
-import HomepageAuth from './Pages/HomepageAuth';
 import AddProduct from './Pages/AddProduct';
 import ViewProductsAdmin from './Pages/ViewProductsAdmin';
 import ProductDetails from './Pages/ProductDetails';

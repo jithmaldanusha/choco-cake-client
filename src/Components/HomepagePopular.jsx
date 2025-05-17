@@ -22,7 +22,7 @@ function HomepagePopular() {
     const fetchCards = async () => {
       try {
         const response = await axios.get(
-          "https://backend.spkstore.lk/product/getProducts"
+          `${process.env.REACT_APP_SERVER_URL}/product/getProducts`
         );
         setCards(response.data.data);
       } catch (error) {
@@ -65,7 +65,7 @@ function HomepagePopular() {
 
         // send data with items and user
         const response = await axios.post(
-          "https://backend.spkstore.lk/cart/addToCart",
+          `${process.env.REACT_APP_SERVER_URL}/cart/addToCart`,
           { items, user: decoded },
           { withCredentials: true }
         );
