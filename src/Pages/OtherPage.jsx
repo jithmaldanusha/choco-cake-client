@@ -69,8 +69,8 @@ function OtherPage() {
     const fetchData = async () => {
       try {
         const response = selectedOptions.length > 0
-          ? await axios.post('https://backend.spkstore.lk/product/getProductsFilter', { checkboxes: selectedOptions })
-          : await axios.get('https://backend.spkstore.lk/product/getProducts');
+          ? await axios.post(`${process.env.REACT_APP_SERVER_URL}/product/getProductsFilter`, { checkboxes: selectedOptions })
+          : await axios.get(`${process.env.REACT_APP_SERVER_URL}/product/getProducts`);
           
         // Filter the products where itemType is "Other"
         const filteredData = response.data.data.filter(product => product.itemType === "Other");

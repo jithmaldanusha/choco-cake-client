@@ -23,7 +23,7 @@ const Records = ({ data }) => {
         console.log(decoded);
 
         // send data with items and user
-        await axios.post("https://backend.spkstore.lk/cart/addToCart",
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/cart/addToCart`,
           { items, user: decoded },
         );
       } catch (error) {

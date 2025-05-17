@@ -296,7 +296,7 @@ function Checkout() {
     setError("");
 
     axios
-      .post("https://backend.spkstore.lk/order/createOrder", formData)
+      .post(`${process.env.REACT_APP_SERVER_URL}/order/createOrder`, formData)
       .then((response) => {
         console.log(response.data.data);
         console.log(typeof response.data.data);
@@ -332,7 +332,7 @@ function Checkout() {
     };
 
     axios
-      .post("https://backend.spkstore.lk/notify-order", emailData)
+      .post(`${process.env.REACT_APP_SERVER_URL}/notify-order`, emailData)
       .then((response) => {
         console.log("Email sent successfully:", response.data);
       })

@@ -24,7 +24,7 @@ function HomePageHotDeals() {
     const fetchCards = () => {
       try {
         axios
-          .get("https://backend.spkstore.lk/product/getProducts")
+          .get(`${process.env.REACT_APP_SERVER_URL}/product/getProducts`)
           .then((response) => {
             setCards(response.data.data);
           }); // Adjust the URL as needed
@@ -75,7 +75,7 @@ function HomePageHotDeals() {
 
         // send data with items and user
         const response = await axios.post(
-          "https://backend.spkstore.lk/cart/addToCart",
+          `${process.env.REACT_APP_SERVER_URL}/cart/addToCart`,
           { items, user: decoded }
         );
 

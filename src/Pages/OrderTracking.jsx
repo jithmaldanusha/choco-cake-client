@@ -56,7 +56,7 @@ function OrderTracking() {
 // get order
   useEffect(() => {
     axios
-      .get(`https://backend.spkstore.lk/order/getOrder/${Email}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/order/getOrder/${Email}`)
       .then((Response) => {
         console.log(Response.data.data);
         setOrders(Response.data.data);

@@ -3,18 +3,7 @@ import React, { useState } from 'react';
 function ProductCard ()  {
   const [isHeartClicked, setIsHeartClicked] = useState(false);
   const [isCartClicked, setIsCartClicked] = useState(false);
-
-  
-
-
-
-
-  
-  
-  
-  
-  
-  
+ 
   return (
     <div className="max-w-xs rounded-lg shadow-md overflow-hidden h-82 ml-9 mt-9" style={{ backgroundColor: '#F3F3F3' }}>
 

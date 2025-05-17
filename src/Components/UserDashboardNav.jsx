@@ -48,7 +48,7 @@ function UserDashboardNav() {
   }
 
   useEffect(() => {
-    axios.get(`https://backend.spkstore.lk/member/getmember/${email}`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/member/getmember/${email}`)
       .then((Response) => {
         console.log(Response.data.data);
         setUser(Response.data.data)
@@ -56,10 +56,6 @@ function UserDashboardNav() {
   }, [])
 
   console.log(user);
-
-
-
-
 
   return (
     <div className="w-1/4 bg-white p-4" style={{ background: "#F4DFC8" }}>

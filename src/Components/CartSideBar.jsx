@@ -24,7 +24,7 @@ function CartSideBar() {
     if (userEmail) {
       // Fetch the latest record from the backend
       axios
-        .get(`https://backend.spkstore.lk/cart/getCartItems/${userEmail}`)
+        .get(`${process.env.REACT_APP_SERVER_URL}/cart/getCartItems/${userEmail}`)
         .then((response) => {
           setLatestRecord(response.data.data.items);
           // console.log(response.data.data.items);

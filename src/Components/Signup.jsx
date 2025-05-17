@@ -77,7 +77,7 @@ function SignUp() {
 
       // HTTP request to pass the values
       axios
-        .post("https://backend.spkstore.lk/member/addmembers", values)
+        .post(`${process.env.REACT_APP_SERVER_URL}/member/addmembers`, values)
         .then((response) => {
           console.log(response.data);
           // need to have rediret to homepage Auth

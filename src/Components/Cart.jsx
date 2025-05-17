@@ -86,7 +86,7 @@ function Cart() {
     try {
       // Send request to API to remove the item
       await axios
-        .delete(`https://backend.spkstore.lk/cart/deleteCartItem/${id}`)
+        .delete(`${process.env.REACT_APP_SERVER_URL}/cart/deleteCartItem/${id}`)
         .then((response) => {
           console.log(response);
         }); // Update with your actual API endpoint

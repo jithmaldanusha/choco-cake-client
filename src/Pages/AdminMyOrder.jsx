@@ -10,7 +10,7 @@ function AdminMyOrder() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("https://backend.spkstore.lk/order/getOrders").then((Response) => {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/order/getOrders`).then((Response) => {
       console.log(Response);
       // Reverse the order of the fetched data so that newest orders are at the top
       setOrders(Response.data.data.reverse());
@@ -27,7 +27,7 @@ function AdminMyOrder() {
     // If the user confirmed, proceed with deletion
     if (isConfirmed) {
       axios
-        .delete(`https://backend.spkstore.lk/order/deleteOrder/${orderId}`)
+        .delete(`${process.env.REACT_APP_SERVER_URL}/order/deleteOrder/${orderId}`)
         .then(() => {
           setOrders(orders.filter((order) => order._id !== orderId));
         })
